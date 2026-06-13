@@ -60,6 +60,8 @@ apis:
         url: https://pro.dp.la/developers/api-codex
       - type: GitHubRepository
         url: https://github.com/dpla/api
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/openapi/openapi.yml
 
   - aid: dpla:api-key-registration
     name: DPLA API Key Registration
@@ -102,6 +104,8 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/plans/plans.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/finops/finops.yml
+  - type: JSONLDContext
+    url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/json-ld/context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
