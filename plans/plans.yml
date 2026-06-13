@@ -1,0 +1,25 @@
+plans:
+  - name: Free Public Access
+    description: >-
+      The DPLA API is entirely free to use for all developers. An API key
+      is required for all requests and is issued at no cost via a self-service
+      email registration endpoint. There are no paid tiers, subscription fees,
+      or per-request charges. The API is funded as a public digital library
+      service and is available to anyone for research, application development,
+      and educational use.
+    type: free
+    url: https://pro.dp.la/developers/api-codex
+    features:
+      - Free API key registration via email
+      - Full-text search across 50M+ cultural heritage item records
+      - Field-specific queries on title, description, subject, creator, type, and more
+      - Date range filtering (before/after)
+      - Geographic search by city, state, and coordinate bounding boxes
+      - Boolean operators (AND/OR) and wildcard (*) search
+      - Paginated results up to 100 items per request
+      - Batch item retrieval of up to 50 IDs per request
+      - Faceted aggregation with up to 2,000 facet values
+      - Date bucket facets by century, decade, year, month, or day
+      - JSON-LD response format
+      - JSONP callback support
+      - Metadata from 4,000+ US libraries, archives, and museums

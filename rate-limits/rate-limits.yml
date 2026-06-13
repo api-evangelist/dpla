@@ -1,0 +1,29 @@
+rateLimits:
+  - api: DPLA Items API
+    description: >-
+      DPLA does not publish a formal rate limit policy. The API is a free
+      public service and developers are expected to use it responsibly.
+      No documented per-second, per-minute, or per-day request caps exist
+      in the public API documentation. Abuse or high-volume automated access
+      may result in throttling at the discretion of DPLA infrastructure.
+      Developers building production applications should implement client-side
+      request pacing and caching to avoid placing excessive load on the service.
+    unauthenticated:
+      allowed: false
+      notes: All requests require a valid api_key parameter or Authorization header.
+    authenticated:
+      requests: not formally documented
+      notes: >-
+        No hard numeric limit is published. DPLA recommends responsible usage.
+        page_size is capped at 100 per request; facet_size is capped at 2,000.
+    constraints:
+      - name: Page size maximum
+        value: 100
+        description: Maximum number of records returnable in a single search response.
+      - name: Batch item fetch maximum
+        value: 50
+        description: Maximum number of item IDs that can be fetched in a single request.
+      - name: Facet size maximum
+        value: 2000
+        description: Maximum number of facet values returnable per query.
+    url: https://pro.dp.la/developers/api-codex

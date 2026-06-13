@@ -1,0 +1,25 @@
+finops:
+  description: >-
+    The DPLA API is a free public service with no subscription fees, usage
+    fees, or per-request charges. It is funded through grants, institutional
+    partnerships, and donations as a non-profit digital public library. API
+    keys are issued at no cost and there are no paid tiers. All 50 million+
+    metadata records are freely accessible to any registered developer.
+  cost: $0
+  model: free non-profit public service
+  registration:
+    - name: Free API Key
+      description: >-
+        Developers obtain a free API key by submitting their email address
+        via HTTP POST to the key registration endpoint. The key is emailed
+        automatically and must be included as the api_key query parameter
+        or Authorization header on every API request.
+      url: https://pro.dp.la/developers/api-codex
+      cost: free
+      endpoint: POST https://api.dp.la/v2/api_key/{email}
+  notes:
+    - DPLA is a 501(c)(3) non-profit organization; the API is provided as a public good.
+    - All metadata aggregated by DPLA is freely available with no licensing fees.
+    - No SLA or guaranteed uptime is offered for free public access.
+    - High-volume automated access should be paced responsibly to protect the shared service.
+    - DPLA accepts donations and grant funding to sustain the platform.

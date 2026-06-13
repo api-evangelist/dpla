@@ -1,0 +1,107 @@
+aid: dpla
+name: Digital Public Library of America
+description: >-
+  The Digital Public Library of America (DPLA) provides a free REST API
+  that gives access to metadata for 50 million+ cultural heritage items
+  aggregated from 4,000+ US libraries, archives, and museums. The API
+  supports full-text search, field-specific queries, geographic and date
+  range filtering, faceted browsing, and JSONP callbacks. All results are
+  returned as JSON-LD. API keys are issued free of charge via a self-service
+  email-based registration endpoint. DPLA aggregates contributions from
+  cultural heritage institutions across the United States and makes the
+  combined metadata freely available to researchers, developers, and the
+  public.
+type: Index
+position: Provider
+access: Public
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Cultural Heritage
+  - Libraries
+  - Archives
+  - Museums
+  - Open Data
+  - Metadata
+  - Digital Collections
+  - Public Domain
+url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+apis:
+  - aid: dpla:items-api
+    name: DPLA Items API
+    description: >-
+      The DPLA Items API provides search and retrieval of metadata records
+      for cultural heritage objects aggregated from 4,000+ US institutions.
+      Supports full-text search, field-level queries, boolean and wildcard
+      operators, geographic distance queries, date range filtering, and
+      faceted aggregations. Returns JSON-LD records containing title, creator,
+      date, subject, rights, provider, and thumbnail information. Pagination
+      supports up to 100 results per page and batch retrieval of up to 50
+      items by ID in a single request.
+    humanURL: https://pro.dp.la/developers/api-codex
+    baseURL: https://api.dp.la/v2
+    tags:
+      - Items
+      - Search
+      - Metadata
+      - Cultural Heritage
+      - Libraries
+      - Archives
+      - Museums
+      - JSON-LD
+    properties:
+      - type: Documentation
+        url: https://pro.dp.la/developers/api-codex
+      - type: GettingStarted
+        url: https://pro.dp.la/developers/api-codex
+      - type: Authentication
+        url: https://pro.dp.la/developers/api-codex
+      - type: GitHubRepository
+        url: https://github.com/dpla/api
+
+  - aid: dpla:api-key-registration
+    name: DPLA API Key Registration
+    description: >-
+      Self-service API key registration endpoint that issues free access keys
+      via email. Developers submit their email address via HTTP POST and
+      receive an API key by email. The key is then passed as the api_key
+      query parameter or Authorization header on all subsequent Items API
+      requests.
+    humanURL: https://pro.dp.la/developers/api-codex
+    baseURL: https://api.dp.la/v2
+    tags:
+      - Authentication
+      - API Keys
+      - Registration
+    properties:
+      - type: Documentation
+        url: https://pro.dp.la/developers/api-codex
+
+common:
+  - type: Website
+    url: https://dp.la/
+  - type: DeveloperPortal
+    url: https://pro.dp.la/developers
+  - type: Documentation
+    url: https://pro.dp.la/developers/api-codex
+  - type: GitHubOrganization
+    url: https://github.com/dpla
+  - type: GitHubRepository
+    url: https://github.com/dpla/api
+  - type: Blog
+    url: https://dp.la/news
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/digital-public-library-of-america
+  - type: Twitter
+    url: https://twitter.com/dpla
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/rate-limits/rate-limits.yml
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/plans/plans.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/finops/finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
