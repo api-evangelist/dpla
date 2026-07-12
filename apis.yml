@@ -82,6 +82,10 @@ apis:
         url: https://pro.dp.la/developers/api-codex
 
 common:
+  - type: DomainSecurity
+    url: security/dpla-domain-security.yml
+  - type: Authentication
+    url: authentication/dpla-authentication.yml
   - type: Website
     url: https://dp.la/
   - type: DeveloperPortal

@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: ApiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: DPLA API key passed as a query parameter. Obtain a free key by sending a POST
+    to /api_key/{email}.
+  sources:
+  - openapi/openapi.yml
+- name: ApiKeyHeader
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: DPLA API key passed as an Authorization header value (not Bearer scheme — just
+    the raw 32-character key).
+  sources:
+  - openapi/openapi.yml
