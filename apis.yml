@@ -82,6 +82,8 @@ apis:
         url: https://pro.dp.la/developers/api-codex
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/dpla-agentic-access.yml
   - type: DomainSecurity
     url: security/dpla-domain-security.yml
   - type: Authentication
