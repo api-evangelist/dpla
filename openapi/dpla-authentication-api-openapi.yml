@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Digital Public Library of America (DPLA) Authentication API
+  description: The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.
+  version: '2'
+  contact:
+    name: DPLA Developer Portal
+    url: https://pro.dp.la/developers
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://dp.la/info/terms-conditions/
+servers:
+- url: https://api.dp.la/v2
+  description: DPLA API v2 production server
+security:
+- ApiKeyQuery: []
+- ApiKeyHeader: []
+tags:
+- name: Authentication
+  description: API key registration and management
+paths:
+  /api_key/{email}:
+    post:
+      operationId: createApiKey
+      summary: Request an API key
+      description: Self-service API key registration. Submit your email address to receive a free DPLA API key via email. The key is 32 characters, alphanumeric with hyphens, and must be passed as the api_key query parameter or Authorization header on all subsequent requests.
+      tags:
+      - Authentication
+      security: []
+      parameters:
+      - name: email
+        in: path
+        required: true
+        description: Email address to receive the API key.
+        schema:
+          type: string
+          format: email
+        example: developer@example.com
+      responses:
+        '200':
+          description: API key sent to the provided email address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Your API key has been sent to developer@example.com.
+        '409':
+          description: Conflict — the API key associated with this email is disabled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        error:
+          type: string
+          description: Machine-readable error code.
+          example: invalid_api_key
+        message:
+          type: string
+          description: Human-readable error description.
+          example: Invalid or inactive API key.
+        documentation:
+          type: string
+          format: uri
+          description: Link to error documentation.
+          example: https://pro.dp.la/developers/responses#errors
+      required:
+      - error
+      - message
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: DPLA API key passed as a query parameter. Obtain a free key by sending a POST to /api_key/{email}.
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: DPLA API key passed as an Authorization header value (not Bearer scheme — just the raw 32-character key).

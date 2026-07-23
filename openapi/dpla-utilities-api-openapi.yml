@@ -1,0 +1,465 @@
+openapi: 3.0.3
+info:
+  title: Digital Public Library of America (DPLA) Authentication Utilities API
+  description: The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.
+  version: '2'
+  contact:
+    name: DPLA Developer Portal
+    url: https://pro.dp.la/developers
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://dp.la/info/terms-conditions/
+servers:
+- url: https://api.dp.la/v2
+  description: DPLA API v2 production server
+security:
+- ApiKeyQuery: []
+- ApiKeyHeader: []
+tags:
+- name: Utilities
+  description: Utility endpoints for health checks and random item retrieval
+paths:
+  /random:
+    get:
+      operationId: randomItem
+      summary: Retrieve a random item
+      description: Returns a single randomly selected cultural heritage item record. Supports an optional filter parameter to constrain the pool of eligible records.
+      tags:
+      - Utilities
+      parameters:
+      - name: filter
+        in: query
+        description: Filter expression to constrain the random selection pool. Format is field:value.
+        schema:
+          type: string
+        example: sourceResource.type:image
+      - name: api_key
+        in: query
+        description: Your DPLA API key. Alternatively, pass as Authorization header.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A randomly selected item record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemSearchResponse'
+        '403':
+          description: Forbidden — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /health-check:
+    get:
+      operationId: healthCheck
+      summary: API health check
+      description: Returns HTTP 200 OK if the API is operational.
+      tags:
+      - Utilities
+      security: []
+      responses:
+        '200':
+          description: API is healthy and operational
+components:
+  schemas:
+    Language:
+      type: object
+      description: Language of the item.
+      properties:
+        name:
+          type: string
+          description: Language name.
+          example: English
+        iso639_3:
+          type: string
+          description: ISO 639-3 three-letter language code.
+          example: eng
+    FacetResult:
+      type: object
+      description: Aggregated facet counts for a specific field.
+      properties:
+        _type:
+          type: string
+          description: Type of facet (e.g., "terms", "date_histogram").
+          example: terms
+        terms:
+          type: array
+          items:
+            $ref: '#/components/schemas/FacetTerm'
+          description: List of term/count pairs for a terms facet.
+    SpatialLocation:
+      type: object
+      description: A geographic location associated with the item.
+      properties:
+        name:
+          type: string
+          description: Place name.
+        city:
+          type: string
+          description: City name.
+        county:
+          type: string
+          description: County name.
+        region:
+          type: string
+          description: Region name.
+        state:
+          type: string
+          description: US state name.
+        country:
+          type: string
+          description: Country name.
+        coordinates:
+          type: string
+          description: Geographic coordinates in "lat,lon" format.
+          example: 38.9072,-77.0369
+        iso3166-2:
+          type: string
+          description: ISO 3166-2 subdivision code.
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        error:
+          type: string
+          description: Machine-readable error code.
+          example: invalid_api_key
+        message:
+          type: string
+          description: Human-readable error description.
+          example: Invalid or inactive API key.
+        documentation:
+          type: string
+          format: uri
+          description: Link to error documentation.
+          example: https://pro.dp.la/developers/responses#errors
+      required:
+      - error
+      - message
+    FacetTerm:
+      type: object
+      description: A single facet term with its document count.
+      properties:
+        term:
+          type: string
+          description: The facet value.
+          example: image
+        count:
+          type: integer
+          description: Number of documents with this value.
+          example: 24831
+    ItemSearchResponse:
+      type: object
+      description: JSON-LD response envelope for a list of DPLA item records.
+      properties:
+        '@context':
+          type: string
+          format: uri
+          description: JSON-LD context URI for DPLA Metadata Application Profile.
+          example: http://dp.la/api/items/context
+        '@id':
+          type: string
+          format: uri
+          description: URI of this result set.
+        count:
+          type: integer
+          description: Total number of records matching the query.
+          example: 128450
+        start:
+          type: integer
+          description: Index of the first result in this page (0-indexed).
+          example: 0
+        limit:
+          type: integer
+          description: Number of results in this page.
+          example: 10
+        docs:
+          type: array
+          description: Array of DPLA item metadata records.
+          items:
+            $ref: '#/components/schemas/DPLAItem'
+        facets:
+          type: object
+          description: Facet aggregation results keyed by field name. Only present when the facets query parameter is used.
+          additionalProperties:
+            $ref: '#/components/schemas/FacetResult'
+    DPLAItem:
+      type: object
+      description: A single DPLA cultural heritage item metadata record (DPLA MAP v4).
+      properties:
+        '@context':
+          type: string
+          format: uri
+          description: JSON-LD context for this record.
+        '@id':
+          type: string
+          format: uri
+          description: Canonical URI for this item in the DPLA.
+          example: http://dp.la/api/items/1df43d2b1b7b21843abb5f44982f1fef
+        id:
+          type: string
+          description: DPLA item identifier (32-character hash).
+          example: 1df43d2b1b7b21843abb5f44982f1fef
+        sourceResource:
+          $ref: '#/components/schemas/SourceResource'
+        dataProvider:
+          $ref: '#/components/schemas/Agent'
+        provider:
+          $ref: '#/components/schemas/Agent'
+        isShownAt:
+          type: string
+          format: uri
+          description: URL at the contributing institution where the item is shown.
+        object:
+          type: string
+          format: uri
+          description: URL of the thumbnail or representative image.
+        hasView:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebResource'
+        iiifManifest:
+          type: string
+          format: uri
+          description: IIIF manifest URL if available.
+        rights:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Rights statement URIs (e.g., RightsStatements.org or Creative Commons).
+        rightsCategory:
+          type: string
+          description: High-level rights category derived from the rights URI.
+        intermediateProvider:
+          type: string
+          description: Intermediate service provider name, if applicable.
+        isPartOf:
+          type: object
+          properties:
+            '@id':
+              type: string
+              format: uri
+            name:
+              type: string
+          description: Collection or set this item belongs to.
+        tags:
+          type: array
+          items:
+            type: string
+          description: User-contributed tags associated with this item.
+        admin:
+          type: object
+          properties:
+            contributingInstitution:
+              type: string
+              description: Name of the contributing institution.
+        score:
+          type: number
+          format: float
+          description: Relevance score assigned by the search engine.
+    SubjectTerm:
+      type: object
+      description: A subject heading term.
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+        name:
+          type: string
+          description: Subject heading text.
+          example: Presidents -- United States
+        scheme:
+          type: string
+          description: Subject vocabulary scheme (e.g., LCSH).
+    Collection:
+      type: object
+      description: The collection this item belongs to at the contributing institution.
+      properties:
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+          description: Collection identifier.
+        title:
+          type: string
+          description: Collection title.
+        description:
+          type: string
+          description: Collection description.
+    WebResource:
+      type: object
+      description: A web-accessible representation or view of the item.
+      properties:
+        '@id':
+          type: string
+          format: uri
+          description: URL of this web resource.
+        format:
+          type: string
+          description: MIME type or format of this resource.
+        rights:
+          type: string
+          description: Rights statement for this resource.
+        edmRights:
+          type: string
+          format: uri
+          description: EDM rights URI for this resource.
+    DateRange:
+      type: object
+      description: A date or date range associated with the item.
+      properties:
+        displayDate:
+          type: string
+          description: Human-readable date string as supplied by the institution.
+          example: circa 1865
+        begin:
+          type: string
+          description: Start date (ISO 8601 or year string).
+          example: '1865'
+        end:
+          type: string
+          description: End date (ISO 8601 or year string).
+          example: '1865'
+        after:
+          type: string
+          description: Date after which results are returned (for filtering).
+        before:
+          type: string
+          description: Date before which results are returned (for filtering).
+    SourceResource:
+      type: object
+      description: The intellectual content and descriptive metadata of the original cultural heritage object, following DPLA Metadata Application Profile.
+      properties:
+        '@id':
+          type: string
+          format: uri
+        title:
+          type: array
+          items:
+            type: string
+          description: Title(s) of the item.
+          example:
+          - Portrait of Abraham Lincoln
+        description:
+          type: array
+          items:
+            type: string
+          description: Description(s) of the item.
+        creator:
+          type: array
+          items:
+            type: string
+          description: Creator(s) or author(s).
+        contributor:
+          type: array
+          items:
+            type: string
+          description: Contributor(s).
+        publisher:
+          type: array
+          items:
+            type: string
+          description: Publisher(s).
+        subject:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubjectTerm'
+          description: Subject headings.
+        type:
+          type: array
+          items:
+            type: string
+          description: 'Object type(s). Common values: image, text, sound, moving image, interactive resource, physical object, collection, dataset.'
+        format:
+          type: array
+          items:
+            type: string
+          description: Physical or digital format.
+        language:
+          type: array
+          items:
+            $ref: '#/components/schemas/Language'
+          description: Language(s) of the item.
+        date:
+          $ref: '#/components/schemas/DateRange'
+        temporal:
+          $ref: '#/components/schemas/DateRange'
+        spatial:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpatialLocation'
+          description: Geographic location(s) associated with the item.
+        identifier:
+          type: array
+          items:
+            type: string
+          description: Local identifier(s) assigned by the contributing institution.
+        rights:
+          type: array
+          items:
+            type: string
+          description: Rights statement text from the contributing institution.
+        relation:
+          type: array
+          items:
+            type: string
+          description: Related resources.
+        extent:
+          type: array
+          items:
+            type: string
+          description: Extent or size of the item.
+        collection:
+          $ref: '#/components/schemas/Collection'
+        subtitle:
+          type: array
+          items:
+            type: string
+          description: Subtitle(s) of the item.
+        specType:
+          type: array
+          items:
+            type: string
+          description: Specific type refinements.
+    Agent:
+      type: object
+      description: An organization or institution acting as provider or data provider.
+      properties:
+        '@id':
+          type: string
+          format: uri
+          description: URI identifying the organization.
+        name:
+          type: string
+          description: Name of the organization.
+          example: Smithsonian Institution
+        exactMatch:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: URIs that exactly identify this organization.
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: DPLA API key passed as a query parameter. Obtain a free key by sending a POST to /api_key/{email}.
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: DPLA API key passed as an Authorization header value (not Bearer scheme — just the raw 32-character key).

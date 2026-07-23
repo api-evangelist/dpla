@@ -1,0 +1,271 @@
+openapi: 3.0.3
+info:
+  title: Digital Public Library of America (DPLA) Authentication Primary Source Sets API
+  description: The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.
+  version: '2'
+  contact:
+    name: DPLA Developer Portal
+    url: https://pro.dp.la/developers
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://dp.la/info/terms-conditions/
+servers:
+- url: https://api.dp.la/v2
+  description: DPLA API v2 production server
+security:
+- ApiKeyQuery: []
+- ApiKeyHeader: []
+tags:
+- name: Primary Source Sets
+  description: Search and retrieve primary source sets (PSS) for education
+paths:
+  /pss/sets:
+    get:
+      operationId: searchPssSets
+      summary: Search primary source sets
+      description: Search DPLA's Primary Source Sets (PSS) — curated collections of primary source documents designed for classroom use. Returns set metadata including title, description, creator, and source items.
+      tags:
+      - Primary Source Sets
+      parameters:
+      - name: q
+        in: query
+        description: Full-text search query.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Page number for pagination.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: page_size
+        in: query
+        description: Number of results per page.
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 500
+          default: 10
+      - name: api_key
+        in: query
+        description: Your DPLA API key.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful primary source sets search response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PssSetListResponse'
+        '403':
+          description: Forbidden — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /pss/sets/{id}:
+    get:
+      operationId: fetchPssSet
+      summary: Fetch a single primary source set by ID
+      description: Retrieve a complete primary source set record by its identifier, including all source items and educational metadata.
+      tags:
+      - Primary Source Sets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Primary source set identifier.
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: Your DPLA API key.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful primary source set fetch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PssSetResponse'
+        '403':
+          description: Forbidden — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Primary source set not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /pss/sources/{id}:
+    get:
+      operationId: fetchPssSource
+      summary: Fetch primary source items belonging to a set
+      description: Retrieve primary source items (hasPart) that belong to a specific primary source set, identified by the set's ID.
+      tags:
+      - Primary Source Sets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Primary source set identifier whose sources to retrieve.
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        description: Your DPLA API key.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful source items response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PssSourceResponse'
+        '403':
+          description: Forbidden — invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        error:
+          type: string
+          description: Machine-readable error code.
+          example: invalid_api_key
+        message:
+          type: string
+          description: Human-readable error description.
+          example: Invalid or inactive API key.
+        documentation:
+          type: string
+          format: uri
+          description: Link to error documentation.
+          example: https://pro.dp.la/developers/responses#errors
+      required:
+      - error
+      - message
+    PssSet:
+      type: object
+      description: A DPLA Primary Source Set record for educational use.
+      properties:
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+        name:
+          type: string
+          description: Title of the primary source set.
+        hasPart:
+          type: array
+          items:
+            type: object
+            properties:
+              '@id':
+                type: string
+                format: uri
+          description: References to source items in this set.
+        about:
+          type: array
+          items:
+            type: object
+          description: Subject topics of this set.
+        creator:
+          type: object
+          description: Organization that created this set.
+        dateCreated:
+          type: string
+          description: Creation date.
+    PssSetResponse:
+      type: object
+      description: A single primary source set.
+      properties:
+        '@context':
+          type: string
+          format: uri
+        '@id':
+          type: string
+          format: uri
+        docs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PssSet'
+    PssSetListResponse:
+      type: object
+      description: List of primary source sets.
+      properties:
+        '@context':
+          type: string
+          format: uri
+        '@id':
+          type: string
+          format: uri
+        count:
+          type: integer
+        docs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PssSet'
+    PssSourceResponse:
+      type: object
+      description: Source items belonging to a primary source set.
+      properties:
+        '@context':
+          type: string
+          format: uri
+        '@id':
+          type: string
+          format: uri
+        docs:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: DPLA API key passed as a query parameter. Obtain a free key by sending a POST to /api_key/{email}.
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: DPLA API key passed as an Authorization header value (not Bearer scheme — just the raw 32-character key).
