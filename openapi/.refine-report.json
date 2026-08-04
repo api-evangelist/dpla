@@ -1,0 +1,20 @@
+{
+  "provider": "dpla",
+  "sources": [
+    "dpla-authentication-api-openapi.yml",
+    "dpla-items-api-openapi.yml",
+    "dpla-primary-source-sets-api-openapi.yml",
+    "dpla-utilities-api-openapi.yml"
+  ],
+  "outputs": [
+    "dpla-authentication-api-openapi.yml",
+    "dpla-items-api-openapi.yml",
+    "dpla-primary-source-sets-api-openapi.yml",
+    "dpla-utilities-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
