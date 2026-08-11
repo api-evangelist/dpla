@@ -130,6 +130,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/dpla/api
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/dpla/api/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/dpla-agentic-access.yml
   - type: DomainSecurity
