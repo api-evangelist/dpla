@@ -1,0 +1,322 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Digital Public Library of America (DPLA) Authentication Items API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search cultural heritage items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dp.la/v2/items",
+            "params": [
+              {
+                "name": "q",
+                "value": "Abraham Lincoln",
+                "type": "query",
+                "description": "Full-text search query. Supports boolean operators (AND, OR, NOT), wildcard characters (* and ?), and phrase matching with quotes."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number for pagination (1-indexed)."
+              },
+              {
+                "name": "page_size",
+                "value": "10",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "facets",
+                "value": "sourceResource.subject.name,sourceResource.type",
+                "type": "query",
+                "description": "Comma-separated list of fields to return as facets (aggregations). Facetable fields include: sourceResource.subject.name, sourceResource.type, sourceResource.format, provider.name, dataProvider.name, sourceResource.language.name, sourceResource.spatial.state, sourceResource.date.begin, rights, admin.contributingInstitution, and others."
+              },
+              {
+                "name": "facet_size",
+                "value": "50",
+                "type": "query",
+                "description": "Maximum number of values to return per facet."
+              },
+              {
+                "name": "fields",
+                "value": "id,sourceResource.title,sourceResource.creator",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in each result document. Limits returned fields to the specified subset."
+              },
+              {
+                "name": "sort_by",
+                "value": "sourceResource.title",
+                "type": "query",
+                "description": "Field name to sort results by."
+              },
+              {
+                "name": "sort_order",
+                "value": "asc",
+                "type": "query",
+                "description": "Sort direction."
+              },
+              {
+                "name": "sort_by_pin",
+                "value": "41.3,-73.2",
+                "type": "query",
+                "description": "Geographic coordinate pin (lat,lon) used for distance-based sorting when sort_by is set to a coordinates field."
+              },
+              {
+                "name": "op",
+                "value": "AND",
+                "type": "query",
+                "description": "Boolean operator used to combine multiple field query terms."
+              },
+              {
+                "name": "exact_field_match",
+                "value": "false",
+                "type": "query",
+                "description": "When true, field queries match exact values rather than using analyzed/tokenized matching."
+              },
+              {
+                "name": "filter",
+                "value": "sourceResource.type:image",
+                "type": "query",
+                "description": "Filter expression to apply to results without affecting relevance scoring. Format is field:value. Can be specified multiple times."
+              },
+              {
+                "name": "sourceResource.title",
+                "value": "",
+                "type": "query",
+                "description": "Filter by title of the cultural heritage item."
+              },
+              {
+                "name": "sourceResource.description",
+                "value": "",
+                "type": "query",
+                "description": "Filter by description text."
+              },
+              {
+                "name": "sourceResource.subject.name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by subject heading name."
+              },
+              {
+                "name": "sourceResource.creator",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creator/author name."
+              },
+              {
+                "name": "sourceResource.contributor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contributor name."
+              },
+              {
+                "name": "sourceResource.publisher",
+                "value": "",
+                "type": "query",
+                "description": "Filter by publisher name."
+              },
+              {
+                "name": "sourceResource.type",
+                "value": "image",
+                "type": "query",
+                "description": "Filter by type (e.g., image, text, sound, moving image, interactive resource, physical object, collection, dataset)."
+              },
+              {
+                "name": "sourceResource.format",
+                "value": "",
+                "type": "query",
+                "description": "Filter by format of the item."
+              },
+              {
+                "name": "sourceResource.language.name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by language name."
+              },
+              {
+                "name": "sourceResource.language.iso639_3",
+                "value": "",
+                "type": "query",
+                "description": "Filter by ISO 639-3 language code."
+              },
+              {
+                "name": "sourceResource.date.begin",
+                "value": "",
+                "type": "query",
+                "description": "Filter by date range begin (ISO 8601 or year)."
+              },
+              {
+                "name": "sourceResource.date.end",
+                "value": "",
+                "type": "query",
+                "description": "Filter by date range end (ISO 8601 or year)."
+              },
+              {
+                "name": "sourceResource.date.after",
+                "value": "",
+                "type": "query",
+                "description": "Filter for items dated after the specified value."
+              },
+              {
+                "name": "sourceResource.date.before",
+                "value": "",
+                "type": "query",
+                "description": "Filter for items dated before the specified value."
+              },
+              {
+                "name": "sourceResource.spatial.name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by geographic location name."
+              },
+              {
+                "name": "sourceResource.spatial.state",
+                "value": "California",
+                "type": "query",
+                "description": "Filter by US state name."
+              },
+              {
+                "name": "sourceResource.spatial.city",
+                "value": "",
+                "type": "query",
+                "description": "Filter by city name."
+              },
+              {
+                "name": "sourceResource.spatial.country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country name."
+              },
+              {
+                "name": "sourceResource.spatial.county",
+                "value": "",
+                "type": "query",
+                "description": "Filter by county name."
+              },
+              {
+                "name": "sourceResource.spatial.region",
+                "value": "",
+                "type": "query",
+                "description": "Filter by region name."
+              },
+              {
+                "name": "sourceResource.spatial.coordinates",
+                "value": "41.3,-73.2",
+                "type": "query",
+                "description": "Filter by geographic coordinates in lat,lon format. Can be used with sort_by_pin for distance-based queries."
+              },
+              {
+                "name": "provider.name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contributing hub/provider name."
+              },
+              {
+                "name": "provider.@id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by provider URI."
+              },
+              {
+                "name": "dataProvider.name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data provider (institution) name."
+              },
+              {
+                "name": "dataProvider.@id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data provider URI."
+              },
+              {
+                "name": "rights",
+                "value": "",
+                "type": "query",
+                "description": "Filter by rights statement URI."
+              },
+              {
+                "name": "rightsCategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter by rights category."
+              },
+              {
+                "name": "isShownAt",
+                "value": "",
+                "type": "query",
+                "description": "Filter by URL where item is shown at the source institution."
+              },
+              {
+                "name": "hasView.@id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by URL of a related digital view."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by DPLA item ID."
+              },
+              {
+                "name": "api_key",
+                "value": "your_32_char_api_key_here_xxxxxx",
+                "type": "query",
+                "description": "Your DPLA API key. Alternatively, pass as Authorization header. Required for all requests."
+              }
+            ]
+          },
+          "docs": "Search DPLA's aggregated metadata of 50 million+ cultural heritage items from 4,000+ US institutions. Supports full-text search, field-level queries, boolean and wildcard operators, geographic distance queries, date range filtering, and faceted aggregations. Returns JSON-LD records."
+        },
+        {
+          "info": {
+            "name": "Fetch a single item by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dp.la/v2/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1df43d2b1b7b21843abb5f44982f1fef",
+                "type": "path",
+                "description": "DPLA item identifier (32-character hash). For batch retrieval, provide up to 50 comma-separated IDs."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your DPLA API key. Alternatively, pass as Authorization header."
+              }
+            ]
+          },
+          "docs": "Retrieve the full metadata record for a single cultural heritage item by its DPLA identifier. The item ID is a 32-character hash string. You may also fetch multiple items at once by providing a comma-separated list of up to 50 IDs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

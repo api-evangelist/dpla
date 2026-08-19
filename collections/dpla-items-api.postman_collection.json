@@ -1,0 +1,1454 @@
+{
+  "item": [
+    {
+      "id": "03e491b9-8f1b-4d40-a3d9-026b027f66fb",
+      "name": "Items",
+      "description": {
+        "content": "Search and retrieve cultural heritage item metadata records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "13089319-c9bc-4412-9025-2ed3286b35fb",
+          "name": "Search cultural heritage items",
+          "request": {
+            "name": "Search cultural heritage items",
+            "description": {
+              "content": "Search DPLA's aggregated metadata of 50 million+ cultural heritage items from 4,000+ US institutions. Supports full-text search, field-level queries, boolean and wildcard operators, geographic distance queries, date range filtering, and faceted aggregations. Returns JSON-LD records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query. Supports boolean operators (AND, OR, NOT), wildcard characters (* and ?), and phrase matching with quotes."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-indexed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "10",
+                  "description": "Number of results per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return as facets (aggregations). Facetable fields include: sourceResource.subject.name, sourceResource.type, sourceResource.format, provider.name, dataProvider.name, sourceResource.language.name, sourceResource.spatial.state, sourceResource.date.begin, rights, admin.contributingInstitution, and others."
+                },
+                {
+                  "disabled": false,
+                  "key": "facet_size",
+                  "value": "50",
+                  "description": "Maximum number of values to return per facet."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in each result document. Limits returned fields to the specified subset."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "asc",
+                  "description": "Sort direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by_pin",
+                  "value": "<string>",
+                  "description": "Geographic coordinate pin (lat,lon) used for distance-based sorting when sort_by is set to a coordinates field."
+                },
+                {
+                  "disabled": false,
+                  "key": "op",
+                  "value": "AND",
+                  "description": "Boolean operator used to combine multiple field query terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "exact_field_match",
+                  "value": "false",
+                  "description": "When true, field queries match exact values rather than using analyzed/tokenized matching."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter expression to apply to results without affecting relevance scoring. Format is field:value. Can be specified multiple times."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.title",
+                  "value": "<string>",
+                  "description": "Filter by title of the cultural heritage item."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.description",
+                  "value": "<string>",
+                  "description": "Filter by description text."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.subject.name",
+                  "value": "<string>",
+                  "description": "Filter by subject heading name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.creator",
+                  "value": "<string>",
+                  "description": "Filter by creator/author name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.contributor",
+                  "value": "<string>",
+                  "description": "Filter by contributor name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.publisher",
+                  "value": "<string>",
+                  "description": "Filter by publisher name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.type",
+                  "value": "<string>",
+                  "description": "Filter by type (e.g., image, text, sound, moving image, interactive resource, physical object, collection, dataset)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.format",
+                  "value": "<string>",
+                  "description": "Filter by format of the item."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.language.name",
+                  "value": "<string>",
+                  "description": "Filter by language name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.language.iso639_3",
+                  "value": "<string>",
+                  "description": "Filter by ISO 639-3 language code."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.date.begin",
+                  "value": "<string>",
+                  "description": "Filter by date range begin (ISO 8601 or year)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.date.end",
+                  "value": "<string>",
+                  "description": "Filter by date range end (ISO 8601 or year)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.date.after",
+                  "value": "<string>",
+                  "description": "Filter for items dated after the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.date.before",
+                  "value": "<string>",
+                  "description": "Filter for items dated before the specified value."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.spatial.name",
+                  "value": "<string>",
+                  "description": "Filter by geographic location name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.spatial.state",
+                  "value": "<string>",
+                  "description": "Filter by US state name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.spatial.city",
+                  "value": "<string>",
+                  "description": "Filter by city name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.spatial.country",
+                  "value": "<string>",
+                  "description": "Filter by country name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.spatial.county",
+                  "value": "<string>",
+                  "description": "Filter by county name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.spatial.region",
+                  "value": "<string>",
+                  "description": "Filter by region name."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceResource.spatial.coordinates",
+                  "value": "<string>",
+                  "description": "Filter by geographic coordinates in lat,lon format. Can be used with sort_by_pin for distance-based queries."
+                },
+                {
+                  "disabled": false,
+                  "key": "provider.name",
+                  "value": "<string>",
+                  "description": "Filter by contributing hub/provider name."
+                },
+                {
+                  "disabled": false,
+                  "key": "provider.@id",
+                  "value": "<uri>",
+                  "description": "Filter by provider URI."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataProvider.name",
+                  "value": "<string>",
+                  "description": "Filter by data provider (institution) name."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataProvider.@id",
+                  "value": "<uri>",
+                  "description": "Filter by data provider URI."
+                },
+                {
+                  "disabled": false,
+                  "key": "rights",
+                  "value": "<string>",
+                  "description": "Filter by rights statement URI."
+                },
+                {
+                  "disabled": false,
+                  "key": "rightsCategory",
+                  "value": "<string>",
+                  "description": "Filter by rights category."
+                },
+                {
+                  "disabled": false,
+                  "key": "isShownAt",
+                  "value": "<uri>",
+                  "description": "Filter by URL where item is shown at the source institution."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasView.@id",
+                  "value": "<uri>",
+                  "description": "Filter by URL of a related digital view."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Filter by DPLA item ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your DPLA API key. Alternatively, pass as Authorization header. Required for all requests."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "603dafe8-fd18-4561-8c2c-8d8b79820865",
+              "name": "Successful search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "Abraham Lincoln"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "sourceResource.subject.name,sourceResource.type"
+                    },
+                    {
+                      "key": "facet_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "id,sourceResource.title,sourceResource.creator"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "sourceResource.title"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by_pin",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "op",
+                      "value": "AND"
+                    },
+                    {
+                      "key": "exact_field_match",
+                      "value": "false"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "sourceResource.type:image"
+                    },
+                    {
+                      "key": "sourceResource.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.subject.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.contributor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.publisher",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.type",
+                      "value": "image"
+                    },
+                    {
+                      "key": "sourceResource.format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.iso639_3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "sourceResource.spatial.city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.coordinates",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "provider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "dataProvider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataProvider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "rights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rightsCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isShownAt",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "hasView.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "your_32_char_api_key_here_xxxxxx"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"http://dp.la/api/items/context\",\n  \"@id\": \"http://HGTXV.fajfrZs3BFiimyBN4LQluAjUjVeCFbmaM\",\n  \"count\": 128450,\n  \"start\": 0,\n  \"limit\": 10,\n  \"docs\": [\n    {\n      \"@context\": \"https://AXbuTFkOZtzGW.bbtZSl92C0iu31PBFC4+wtCqmuns0Pa6sZZPhP87CBUsJKKticM\",\n      \"@id\": \"http://dp.la/api/items/1df43d2b1b7b21843abb5f44982f1fef\",\n      \"id\": \"1df43d2b1b7b21843abb5f44982f1fef\",\n      \"sourceResource\": {\n        \"@id\": \"http://WHAJYxqFEwtXrkNumyipOoJXEsU.nrrtmzytEkctxDVXwtCN6HJpBbqAumwFOqNYJy\",\n        \"title\": [\n          \"Portrait of Abraham Lincoln\"\n        ],\n        \"description\": [\n          \"string\",\n          \"string\"\n        ],\n        \"creator\": [\n          \"string\",\n          \"string\"\n        ],\n        \"contributor\": [\n          \"string\",\n          \"string\"\n        ],\n        \"publisher\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject\": [\n          {\n            \"@id\": \"https://aeBNuRjrLMtJbagXjljZeNWkemfY.vzhQbt1xcu7vSESrSV0DcJxnQ3e6lrb2RC4CXz1T.vC5gx\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          },\n          {\n            \"@id\": \"http://skUkOVmhieHYdjUROnEnTtaIuREo.nxDqnDPWGhMWVCqqXeKxsIKBRDex6a-hST\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          }\n        ],\n        \"type\": [\n          \"string\",\n          \"string\"\n        ],\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"language\": [\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          },\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          }\n        ],\n        \"date\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"temporal\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"spatial\": [\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          }\n        ],\n        \"identifier\": [\n          \"string\",\n          \"string\"\n        ],\n        \"rights\": [\n          \"string\",\n          \"string\"\n        ],\n        \"relation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extent\": [\n          \"string\",\n          \"string\"\n        ],\n        \"collection\": {\n          \"@id\": \"http://AUPSeYinDZvipIdKYGWkTdLfVd.yttHHuheB4CNSjWhmxkDotlJWHia,sKvPEAExH6Tm7PBYh\",\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"subtitle\": [\n          \"string\",\n          \"string\"\n        ],\n        \"specType\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"dataProvider\": {\n        \"@id\": \"http://YaSfxQeYp.uvas5hfg1zbS-\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"http://ciccrSTwNFaFKlLAtvaniwzyUOOhdFF.bjVGE8Zj2RSANLMULyndeY11vDmrO9aw.DBdwWA1s.VD\",\n          \"http://WNVBvXiQmgDQnzDebaRozaqEJ.damONKf5dXAPRB+OyN1ivDar1QKn5Zmrul\"\n        ]\n      },\n      \"provider\": {\n        \"@id\": \"https://iuhVKnPOrYrGhoquVfwMloMRKcomew.hoka+jTUvwGcSgR5xlpPKaRbx5Sj,GBopmdiI5cyiJBelY\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"http://LWFZIzMPCaihVGlzBl.defgXI4VVgX2irgxbZGuawVG8-dDe2xqgJoTJ1OdRhl+JOsaBXnbmXCdraQt0t,nZQlKgHYI\",\n          \"http://gqSjpJRRrjwhWaTQEuam.scodyMkO9tdvNvRRupx42mWtxVVpF0QF8rzkmY49wkxs9TJE\"\n        ]\n      },\n      \"isShownAt\": \"https://gxyupjlObCreJoF.gixSxwMWJEK0NIzTgpRdx\",\n      \"object\": \"http://wSsjIgKyzzpfJZCat.miELtetUGxR4UcywN\",\n      \"hasView\": [\n        {\n          \"@id\": \"https://fYBzOLSDgjNySJVBftUOFh.agooUl2l8OSSmQWikkT1ZvgIeP\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"http://PjuJzVkjBYVB.tuidHYyBDHFvyk\"\n        },\n        {\n          \"@id\": \"https://toDvcUEAqnJmNPIWeVkwOOGMeflsVWF.uuxJm4XPWHlPNe9AqL0JMDe+EBDxxtRXU,wRv5nSb5NbDKKWr7h4N-8VgTGnVEgj0fBZNGM+MpY\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://CqFjrXMp.ugfgrqm+rWUmbk\"\n        }\n      ],\n      \"iiifManifest\": \"https://nzhaWWtLGCmDZBUAoNOEDrpfRQm.hszHz1jbxToOVZZdvUCAvMwNqn6+q4\",\n      \"rights\": [\n        \"http://rlKOqjLdUzPkOPdVkGGybC.cvpqV.nttwsgxPGn4pGEfGkFr5Fk4LTdPk\",\n        \"http://durvrwljNPYstHauYeZRdCOoaBUrbe.dzxu9dHYB.pX\"\n      ],\n      \"rightsCategory\": \"string\",\n      \"intermediateProvider\": \"string\",\n      \"isPartOf\": {\n        \"@id\": \"http://hVcJTwSrsdIUDDQTYrADUu.fdjmG-lpxgxiWJOhEfYg+fLnIyk,NB7E6Pre.,hqk4x7DWkh6KG2exNA4DteaUymd\",\n        \"name\": \"string\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"admin\": {\n        \"contributingInstitution\": \"string\"\n      },\n      \"score\": 9510.519473707513\n    },\n    {\n      \"@context\": \"http://ec.zbnfSk1L9KqSZTopfdqZzDwHnSo1CPBsiDTZD\",\n      \"@id\": \"http://dp.la/api/items/1df43d2b1b7b21843abb5f44982f1fef\",\n      \"id\": \"1df43d2b1b7b21843abb5f44982f1fef\",\n      \"sourceResource\": {\n        \"@id\": \"http://mmoLrCfxCJWUbzhEnXFpljQpNEirPDZRB.kcrIeaqIdbxgbqMFV-5OsS+zAEXOE\",\n        \"title\": [\n          \"Portrait of Abraham Lincoln\"\n        ],\n        \"description\": [\n          \"string\",\n          \"string\"\n        ],\n        \"creator\": [\n          \"string\",\n          \"string\"\n        ],\n        \"contributor\": [\n          \"string\",\n          \"string\"\n        ],\n        \"publisher\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject\": [\n          {\n            \"@id\": \"http://MLESdYAjyCCQnvoqVjyYYAK.dmtKX4qjopQm,\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          },\n          {\n            \"@id\": \"http://oloCWvThCkVut.gkfvS+JxGcNbi2wQRxx\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          }\n        ],\n        \"type\": [\n          \"string\",\n          \"string\"\n        ],\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"language\": [\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          },\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          }\n        ],\n        \"date\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"temporal\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"spatial\": [\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          }\n        ],\n        \"identifier\": [\n          \"string\",\n          \"string\"\n        ],\n        \"rights\": [\n          \"string\",\n          \"string\"\n        ],\n        \"relation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extent\": [\n          \"string\",\n          \"string\"\n        ],\n        \"collection\": {\n          \"@id\": \"https://XWTovdLAd.ctjqNFHd0j7x8ZCbGakNkS8MsNjtmmFCIrEAxll,xBuOT.QiR.qNIpnXjWg\",\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"subtitle\": [\n          \"string\",\n          \"string\"\n        ],\n        \"specType\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"dataProvider\": {\n        \"@id\": \"https://wUBWnDZ.xrRz4BNIABz1LY8h8Dh-.Xl\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"http://I.tkYr3bTnNRlH-Y1xQWAJEazv69Pu,CBk3Ow-r8uUELMK\",\n          \"http://fRnuEKnwjmojnUm.fnwmjt--la14DjQ6OYFhg9BJa8UfUw2Usrpmons+\"\n        ]\n      },\n      \"provider\": {\n        \"@id\": \"http://WfIKLrEPfOhvDKQrIFBP.bhnts-AJjsOPIWGe0\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"https://SLrGATHERuxzOImVfunsznkA.nngey70XM5YFTz.hmkYYuO27NqJyFzERaIZIsyOYdRup94,Zk3XcN0JdOsWSnLBqi\",\n          \"http://iURCceOSYNYXMKmpMTFFgDe.wmPA5cHCXLJLJq8V-IAFoTQ\"\n        ]\n      },\n      \"isShownAt\": \"https://NiBfKwLTRbVxqwIPm.gbVzccc2GOVOqfDBKalGRVLWyLoKa.3IuKBbsg\",\n      \"object\": \"https://nVRZSEPqsV.cper0wxqaWIb0.jl0Ed.MOw4ZEt6+pkJODu8MR7iaSLliQN2QGYlqieBQi92yvAAcZ197O\",\n      \"hasView\": [\n        {\n          \"@id\": \"https://yYrLZlsaTZvgt.qrvoCE6ZfihwP5xTA+70RhNG-FEuFzqkOHM\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://CfUUFtjqiM.rkhX87hYH5L.aL2XCQNzzSu.,XvfJk--LXqi0lZmONnntxzcGR+UJ9r.oAVj\"\n        },\n        {\n          \"@id\": \"http://QTOqItiqxGvSbKogHLNkJneNkvdxYBmcB.hvvusEfrFmL78oYFSjhbs5noq.uig45eoVLaZ43CowsYUZckElDcV-iXPWB\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"http://yGIHZl.blxTLUOYt+DXt5wmbcY.A1EHG-cVh0ZvMmht.oH\"\n        }\n      ],\n      \"iiifManifest\": \"https://bSRBifKecYXxeGKkTq.kfllAdh2bQWpebvNgNkaVHmIPhpzOPjy7gwZdxNeTXRTALadA-tl-uUWvjdne\",\n      \"rights\": [\n        \"https://WGxDhDLWkvEyE.ewubsFCmUYxUMzzb7\",\n        \"https://zxJw.heoKNL,qtF62em9eWeR7Zq0Ksh8echsDQkXh9nU,ij\"\n      ],\n      \"rightsCategory\": \"string\",\n      \"intermediateProvider\": \"string\",\n      \"isPartOf\": {\n        \"@id\": \"https://iJVekUYoifAoSdLZUNEljwHZDYKCKC.jsft+sv1MVtMzX5MDeg\",\n        \"name\": \"string\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"admin\": {\n        \"contributingInstitution\": \"string\"\n      },\n      \"score\": 6097.768202979806\n    }\n  ],\n  \"facets\": {\n    \"key_0\": {\n      \"_type\": \"terms\",\n      \"terms\": [\n        {\n          \"term\": \"image\",\n          \"count\": 24831\n        },\n        {\n          \"term\": \"image\",\n          \"count\": 24831\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f8513e4-0a56-47c4-a0bd-f22d956ba29a",
+              "name": "Bad request — invalid query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "Abraham Lincoln"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "sourceResource.subject.name,sourceResource.type"
+                    },
+                    {
+                      "key": "facet_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "id,sourceResource.title,sourceResource.creator"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "sourceResource.title"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by_pin",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "op",
+                      "value": "AND"
+                    },
+                    {
+                      "key": "exact_field_match",
+                      "value": "false"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "sourceResource.type:image"
+                    },
+                    {
+                      "key": "sourceResource.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.subject.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.contributor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.publisher",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.type",
+                      "value": "image"
+                    },
+                    {
+                      "key": "sourceResource.format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.iso639_3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "sourceResource.spatial.city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.coordinates",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "provider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "dataProvider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataProvider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "rights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rightsCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isShownAt",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "hasView.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "your_32_char_api_key_here_xxxxxx"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22682c83-2d6f-4309-852a-531805316334",
+              "name": "Forbidden — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "Abraham Lincoln"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "sourceResource.subject.name,sourceResource.type"
+                    },
+                    {
+                      "key": "facet_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "id,sourceResource.title,sourceResource.creator"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "sourceResource.title"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by_pin",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "op",
+                      "value": "AND"
+                    },
+                    {
+                      "key": "exact_field_match",
+                      "value": "false"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "sourceResource.type:image"
+                    },
+                    {
+                      "key": "sourceResource.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.subject.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.contributor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.publisher",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.type",
+                      "value": "image"
+                    },
+                    {
+                      "key": "sourceResource.format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.iso639_3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "sourceResource.spatial.city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.coordinates",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "provider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "dataProvider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataProvider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "rights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rightsCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isShownAt",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "hasView.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "your_32_char_api_key_here_xxxxxx"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04355f18-ac87-4636-bdf4-747a7f6599b0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "Abraham Lincoln"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "sourceResource.subject.name,sourceResource.type"
+                    },
+                    {
+                      "key": "facet_size",
+                      "value": "50"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "id,sourceResource.title,sourceResource.creator"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "sourceResource.title"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "sort_by_pin",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "op",
+                      "value": "AND"
+                    },
+                    {
+                      "key": "exact_field_match",
+                      "value": "false"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "sourceResource.type:image"
+                    },
+                    {
+                      "key": "sourceResource.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.subject.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.creator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.contributor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.publisher",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.type",
+                      "value": "image"
+                    },
+                    {
+                      "key": "sourceResource.format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.language.iso639_3",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.begin",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.date.before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "sourceResource.spatial.city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.county",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceResource.spatial.coordinates",
+                      "value": "41.3,-73.2"
+                    },
+                    {
+                      "key": "provider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "dataProvider.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dataProvider.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "rights",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rightsCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isShownAt",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "hasView.@id",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "your_32_char_api_key_here_xxxxxx"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df11052d-4c88-4d42-8b1d-e36e15bf1114",
+          "name": "Fetch a single item by ID",
+          "request": {
+            "name": "Fetch a single item by ID",
+            "description": {
+              "content": "Retrieve the full metadata record for a single cultural heritage item by its DPLA identifier. The item ID is a 32-character hash string. You may also fetch multiple items at once by providing a comma-separated list of up to 50 IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "items",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your DPLA API key. Alternatively, pass as Authorization header."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) DPLA item identifier (32-character hash). For batch retrieval, provide up to 50 comma-separated IDs."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec421bec-7682-4b94-814a-b45334537dc5",
+              "name": "Successful item fetch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) DPLA item identifier (32-character hash). For batch retrieval, provide up to 50 comma-separated IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"https://em.fcK4VZS0dVHf,dUPcgdzDd3F4wRIWfwqqp0zdLdxHOTd,2P36o96oO4q5tdSiV.ULCGA\",\n  \"@id\": \"http://HTlK.mvbg3x8WL0RQZ0NFauFIEuQ-HyHFSN-9ZnyTFDjQh1l\",\n  \"count\": 5416,\n  \"docs\": [\n    {\n      \"@context\": \"http://PpLGhFPYxXnpDm.sjYY51hiCTT+dYNXJxOj+KbUZAQF4keb3qXK\",\n      \"@id\": \"http://dp.la/api/items/1df43d2b1b7b21843abb5f44982f1fef\",\n      \"id\": \"1df43d2b1b7b21843abb5f44982f1fef\",\n      \"sourceResource\": {\n        \"@id\": \"http://PJtIVZaLHegVUh.qjdaP8-iCfcxYFvD0\",\n        \"title\": [\n          \"Portrait of Abraham Lincoln\"\n        ],\n        \"description\": [\n          \"string\",\n          \"string\"\n        ],\n        \"creator\": [\n          \"string\",\n          \"string\"\n        ],\n        \"contributor\": [\n          \"string\",\n          \"string\"\n        ],\n        \"publisher\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject\": [\n          {\n            \"@id\": \"http://YUMObHRyZVdrbiVXyTIoQonWaifolz.czROhFTtltkDM1xNYOnL4txF-fni6KWrScyPd+MII\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          },\n          {\n            \"@id\": \"https://fsfpLiTYfpZMdCao.zqE7wZbaX.9QvV3Jb28aYvol6gH\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          }\n        ],\n        \"type\": [\n          \"string\",\n          \"string\"\n        ],\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"language\": [\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          },\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          }\n        ],\n        \"date\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"temporal\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"spatial\": [\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          }\n        ],\n        \"identifier\": [\n          \"string\",\n          \"string\"\n        ],\n        \"rights\": [\n          \"string\",\n          \"string\"\n        ],\n        \"relation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extent\": [\n          \"string\",\n          \"string\"\n        ],\n        \"collection\": {\n          \"@id\": \"https://y.nmsyB79VQBRv4H+F8IFdpgdmfGUvhUYcAA3Za1K2q78Ke4jh,8yFhzeZq,5g\",\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"subtitle\": [\n          \"string\",\n          \"string\"\n        ],\n        \"specType\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"dataProvider\": {\n        \"@id\": \"http://igNlisIaHlKcfrlwdkfdJSZmjRSUHFkF.rpcfUKscgbKGWujG9Ex4hxbdXNjDLnO14e0RmG3QOB8pODZhBizM\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"http://eOFiuWWTifdGXUGz.sbnDMjoGJVCOo7Qbh.ui2ke42D+AOGh7naK80wpKScDkNONM9NYgqYbAOJfCQ-DK,ThyTa\",\n          \"http://rynV.iimr,p\"\n        ]\n      },\n      \"provider\": {\n        \"@id\": \"http://iRwNzOGFUsoqdXgDPa.nrwuU-B3-sQRKsigAJj4rmo5WwIjx5Tcbl,LgJIcbM-BD.HR,VLBLMMSKJ0Kyqu7q0jyG.bwqXj3TK3mpIh51oc\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"https://imuIEREqytNOCzxTwcpbpxa.dbiqk.OStyMpYz.NsYcJ66wvfT-BQU9zMLleg,G,6+ssMLu5IKtfaI.bb2Dj,Ob\",\n          \"https://GlYUuSAUmxeecRAZtdvPlfEGcNxR.kzjBhsEjYxTbq\"\n        ]\n      },\n      \"isShownAt\": \"http://Rxzex.fufxBIDlm2x7KEDEXfTJOL3TVNkaiwzBi90ITMDkafD+\",\n      \"object\": \"https://ADMtGzgCBaVwvTgNH.hcroP-H0Y6AbMtKOmZ\",\n      \"hasView\": [\n        {\n          \"@id\": \"http://HFKrPkfLBimuimgc.jloeyH6YScBLbzhwgmDBmRzK.Aa\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://mFLnRSEb.fnynPiY9Q5SLsE.RkLDZvmJ\"\n        },\n        {\n          \"@id\": \"https://xZkTKxJtmeGJLfGavKrFXrWIMtgGcSp.tlznLidZ3RsXPVehActqIAPSUnkrLuueHxX.yilr3L8jEMDkflrK2BXr4\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://EF.mjep3TbR2RIQd\"\n        }\n      ],\n      \"iiifManifest\": \"http://ObbFI.ehsqmGk,.ppVDGXu474\",\n      \"rights\": [\n        \"https://OSmMButccaszImwjDblPmdMkqK.kxcVEXc4DNHmMTweWgv9bk6qUF\",\n        \"https://nPpbIAhClnvLgivRyyBivQfNOamONylt.crpjZP5uKnglX3IXKaKM-B5LfbDL4Va86\"\n      ],\n      \"rightsCategory\": \"string\",\n      \"intermediateProvider\": \"string\",\n      \"isPartOf\": {\n        \"@id\": \"http://qwBCNKzzSuNJavbYzbwl.rdgNzHo0gNw-cJwS9z+qtAhlFHl,HABQT3+boQ\",\n        \"name\": \"string\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"admin\": {\n        \"contributingInstitution\": \"string\"\n      },\n      \"score\": 4889.257829876759\n    },\n    {\n      \"@context\": \"https://TYHRKMwKzoksDK.fndfHRLEji+In8k+nPIOMaQ.qxKEDwDvj9yoauJ\",\n      \"@id\": \"http://dp.la/api/items/1df43d2b1b7b21843abb5f44982f1fef\",\n      \"id\": \"1df43d2b1b7b21843abb5f44982f1fef\",\n      \"sourceResource\": {\n        \"@id\": \"https://iyzbMLS.xzyNwWKFb2P6udGjTD+g8QY2fNgnaY1r8qKvkhobyErom\",\n        \"title\": [\n          \"Portrait of Abraham Lincoln\"\n        ],\n        \"description\": [\n          \"string\",\n          \"string\"\n        ],\n        \"creator\": [\n          \"string\",\n          \"string\"\n        ],\n        \"contributor\": [\n          \"string\",\n          \"string\"\n        ],\n        \"publisher\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject\": [\n          {\n            \"@id\": \"http://DGKVtQjWkYlPjlTZGuxMN.pdsWmjhPj4bMB+w2mKRUR076FU7GOhbP1Gw6PoG.EsbTkUP7hsCzXLINCxAVPJW7gZsh6A\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          },\n          {\n            \"@id\": \"https://qeaFZFPRGu.xavOdPmsmoOrXdKvqC+5pEIQR\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          }\n        ],\n        \"type\": [\n          \"string\",\n          \"string\"\n        ],\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"language\": [\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          },\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          }\n        ],\n        \"date\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"temporal\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"spatial\": [\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          }\n        ],\n        \"identifier\": [\n          \"string\",\n          \"string\"\n        ],\n        \"rights\": [\n          \"string\",\n          \"string\"\n        ],\n        \"relation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extent\": [\n          \"string\",\n          \"string\"\n        ],\n        \"collection\": {\n          \"@id\": \"https://mtkWK.ienvCEn3sJKL5P1K5RjewLv7E0lNtLyruPmyGld9ZvDe74LPf-nnlpki1uFJ,iUa\",\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"subtitle\": [\n          \"string\",\n          \"string\"\n        ],\n        \"specType\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"dataProvider\": {\n        \"@id\": \"https://nscWKRWHFbkXMdtUtJbwIEWqGMZS.bpvpfJWXwWccsaGq85kz5vhZiMg7DpbKjznUWKBRuvkCQG5Z\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"https://bkNYVNqWFelGj.jgfk-EEjIQVY\",\n          \"http://xoBZKrRSGoXlHUVfE.jxJ4tMER3BnsJCOOedONvItyWjt4nNaT3EC5NmQKILTOVZ6u-4ywHQ-3Ql-PQ\"\n        ]\n      },\n      \"provider\": {\n        \"@id\": \"http://koKDQuwZXIoRhGCYO.ywemiLsS3Qe3PhiqfPOt33O8UHsbHzHKgBC\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"http://PKUqMwvBSWwToHUeBRWGnqmhiqWOrR.elNt3hJlG1zWsreKFOWqhHcm6LxkyOI5kI3TsfiRw0jRAy\",\n          \"http://uGaImrqKoUpmROsnJYWIcouldErXW.gwiQGaqUjFcCTSnjnIHUqJo7JoWiFW4x4UpQ2,eu5JCcHVtTviQmBDSi5FevI\"\n        ]\n      },\n      \"isShownAt\": \"http://qezniWezuNUbO.qkkaevZ2i39TdemJCiOpQz\",\n      \"object\": \"https://EozNugDlKIhJmOaMEyrFyewqtaCSHeMai.bskalbPyrUK4olOhsZK5rypVZZe9mjX4hVcED8DZ3u-U-jPGBFx6Dl\",\n      \"hasView\": [\n        {\n          \"@id\": \"http://LaxOGWG.plgCmXuTPAySaxqe-L,vO9ph8FRF8x\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://fUbAzBBmJVNSfZHrdGSjFEZmIGOobmnze.uppqGbyq7ttCvbUkD+tRvI1I4WH0jo8XraXXhU00eXWSWFBALpCG4wIngugxz6Wb49F,9pGC\"\n        },\n        {\n          \"@id\": \"https://S.iwhnn5zffIthfnc5xY.qw4xDb+y\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://jGfeIbQKszYkCovbQPVcyhAWc.spV4+I0fMtqbpxl9RAPM96FgFnVqZ81UF3Xy\"\n        }\n      ],\n      \"iiifManifest\": \"https://FZGqgUCSmVlwdaeFXuj.ubLVrMkdAv+IDY\",\n      \"rights\": [\n        \"https://PPlPTmyisfMpYqnfqgH.ovem5ejVZVFT,8fMGBWgJNXmBg3NMNwiYtE1eHX6yoWLHQ25Q\",\n        \"http://WZbcXwB.uayrYIoXrER,vjLsjqMUZRJtk,931jkdcRmBs1dvk8\"\n      ],\n      \"rightsCategory\": \"string\",\n      \"intermediateProvider\": \"string\",\n      \"isPartOf\": {\n        \"@id\": \"http://hHNtuNSdDr.tmdcaufH8ug7jEBeyghNtDaYwvjxjqS.RJUM\",\n        \"name\": \"string\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"admin\": {\n        \"contributingInstitution\": \"string\"\n      },\n      \"score\": 3417.043699700668\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f43127ec-05d9-44b0-9764-b9d97dc64669",
+              "name": "Forbidden — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) DPLA item identifier (32-character hash). For batch retrieval, provide up to 50 comma-separated IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "120eff4a-bb7b-4d2f-a38a-666906a37c82",
+              "name": "Item not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) DPLA item identifier (32-character hash). For batch retrieval, provide up to 50 comma-separated IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30f61a0c-9aea-45d3-a938-375be5ad6966",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) DPLA item identifier (32-character hash). For batch retrieval, provide up to 50 comma-separated IDs."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dp.la/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "97a6f707-c980-4dd4-8112-8664512d5249",
+    "name": "Digital Public Library of America (DPLA) Authentication Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.\n\nContact Support:\n Name: DPLA Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

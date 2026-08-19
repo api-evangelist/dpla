@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Digital Public Library of America (DPLA) Authentication Primary Source Sets API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Primary Source Sets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search primary source sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dp.la/v2/pss/sets",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your DPLA API key."
+              }
+            ]
+          },
+          "docs": "Search DPLA's Primary Source Sets (PSS) — curated collections of primary source documents designed for classroom use. Returns set metadata including title, description, creator, and source items."
+        },
+        {
+          "info": {
+            "name": "Fetch a single primary source set by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dp.la/v2/pss/sets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary source set identifier."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your DPLA API key."
+              }
+            ]
+          },
+          "docs": "Retrieve a complete primary source set record by its identifier, including all source items and educational metadata."
+        },
+        {
+          "info": {
+            "name": "Fetch primary source items belonging to a set",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dp.la/v2/pss/sources/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary source set identifier whose sources to retrieve."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your DPLA API key."
+              }
+            ]
+          },
+          "docs": "Retrieve primary source items (hasPart) that belong to a specific primary source set, identified by the set's ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

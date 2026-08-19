@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Digital Public Library of America (DPLA) Authentication API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.dp.la/v2/api_key/:email",
+            "params": [
+              {
+                "name": "email",
+                "value": "developer@example.com",
+                "type": "path",
+                "description": "Email address to receive the API key."
+              }
+            ]
+          },
+          "docs": "Self-service API key registration. Submit your email address to receive a free DPLA API key via email. The key is 32 characters, alphanumeric with hyphens, and must be passed as the api_key query parameter or Authorization header on all subsequent requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,304 @@
+{
+  "item": [
+    {
+      "id": "4fb56c0b-6125-4e53-8ee9-0b7aca385f18",
+      "name": "Utilities",
+      "description": {
+        "content": "Utility endpoints for health checks and random item retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f8c6f67-d5b0-4972-b950-6d3429d941fb",
+          "name": "Retrieve a random item",
+          "request": {
+            "name": "Retrieve a random item",
+            "description": {
+              "content": "Returns a single randomly selected cultural heritage item record. Supports an optional filter parameter to constrain the pool of eligible records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "random"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter expression to constrain the random selection pool. Format is field:value."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your DPLA API key. Alternatively, pass as Authorization header."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4927c558-7755-443f-85ec-52669b2ba39f",
+              "name": "A randomly selected item record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "sourceResource.type:image"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"http://dp.la/api/items/context\",\n  \"@id\": \"http://DlOIIwaQsavKOXEDVRpnpbAGISwdVOlHe.foimIgx43--lQOjVV7JQ78OrOUb5v4XuJGmqq6P14PWpj\",\n  \"count\": 128450,\n  \"start\": 0,\n  \"limit\": 10,\n  \"docs\": [\n    {\n      \"@context\": \"https://yqdHH.pnsCF7+VCzqQEimGIUnibylq8gQspqMDjKkweo.DCpjXG7W\",\n      \"@id\": \"http://dp.la/api/items/1df43d2b1b7b21843abb5f44982f1fef\",\n      \"id\": \"1df43d2b1b7b21843abb5f44982f1fef\",\n      \"sourceResource\": {\n        \"@id\": \"http://qBHbBjUCunuuHFlJxUlAkQJv.qbiZqfZ5QmNaLc2+unJuagG-QkEp2MFy,a5aF.L5BZ-Y\",\n        \"title\": [\n          \"Portrait of Abraham Lincoln\"\n        ],\n        \"description\": [\n          \"string\",\n          \"string\"\n        ],\n        \"creator\": [\n          \"string\",\n          \"string\"\n        ],\n        \"contributor\": [\n          \"string\",\n          \"string\"\n        ],\n        \"publisher\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject\": [\n          {\n            \"@id\": \"http://IdOLZEuELneU.upaC1zTNInUPeG3eN5\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          },\n          {\n            \"@id\": \"https://cxnJOETFuoYBqbpjusGjCaUbmTB.odojL-OnSKqTVIZ0KsFBZzikQupFcsLeABEfPf+OkVYdSQd0AVHpP6OsRhyea+f4.\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          }\n        ],\n        \"type\": [\n          \"string\",\n          \"string\"\n        ],\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"language\": [\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          },\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          }\n        ],\n        \"date\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"temporal\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"spatial\": [\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          }\n        ],\n        \"identifier\": [\n          \"string\",\n          \"string\"\n        ],\n        \"rights\": [\n          \"string\",\n          \"string\"\n        ],\n        \"relation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extent\": [\n          \"string\",\n          \"string\"\n        ],\n        \"collection\": {\n          \"@id\": \"https://lupTAhqUKrjmKULzrLsbMcLvcv.geqC7vJgQyknUGs8ZxnyE9LQGi8hleL3kyKhhnn99JSVoQwLEzanryK0H\",\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"subtitle\": [\n          \"string\",\n          \"string\"\n        ],\n        \"specType\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"dataProvider\": {\n        \"@id\": \"https://zVkKeWYjVQXjXpBoUQ.sltlT6XbKwcNXQcSxww6Xnha2QocMt-GVJrT-E\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"https://TzRUUtcEOVuLvJnNfpaLjgsIz.wlY2Pyrp0BVv6jWrfGZ0J2C+rcWqfa3Z2z3EkhXv4U1VRzQMEob6p0.+DdkGkI9MQHBxMJHkFmfLhNCG0CgtA\",\n          \"http://fMyuLKixwCmv.blgD.Ol9OlDBXvM\"\n        ]\n      },\n      \"provider\": {\n        \"@id\": \"https://AyIfaBMsXqzsUNfIDyzid.mcyzntWHsI0a3tJHQHtWREnksfQmjLcyhBvWVx0JZxRQliw1RocwaMFg,EpmHldMwhU7\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"https://ipVVcinYIafNglFTOzmLFmsBsx.sfmqw6ZwPE1JlaokMMM1kRQNE8Y0sS7T9l\",\n          \"https://xJgJhMbHFMMfvDoDnbqvoPyDjkezGAF.jebSCwyBxTEbB154\"\n        ]\n      },\n      \"isShownAt\": \"https://VXmhIRKKlyXGyegWDUYiJwGtZuXe.bnjkZPYlfNCIUhjtx,PyYNJYtqDFVMfbn9G\",\n      \"object\": \"http://nTqxaZCrGvqtrUGpdLwVlP.ertbhyZ-TWMkj3r1c+2+x5DXmLQ1jvU3rRuj\",\n      \"hasView\": [\n        {\n          \"@id\": \"https://Um.wum81L+MpNYlGo.TeWZZ7DBGRLIgVRa-SjOTM.tGtivufVyfnu,4CNlbJb8WA\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://xhGGNUxdtGbhVpKBaOmPVyMIjTe.iclnhY-0DecktB62hwUUWw9rQIjlURHT4.O5tqEz\"\n        },\n        {\n          \"@id\": \"https://LxrswiHvpCjzYAWiORVgntMXkCxIXyC.lrzmsP14+p6OBR2lMUi\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"https://pRoRIsTYR.zyhGPhQliN-QrT\"\n        }\n      ],\n      \"iiifManifest\": \"http://P.wnbcJrbpFJEhMv5RyhH7WPg2CKnWsWeNBKP+OV\",\n      \"rights\": [\n        \"http://kTnfBsGbTibstyxbAQeGzcx.psGdX2mlxWVMXA,oq1P9\",\n        \"http://OMFFnoqaALXADeEARWrsWhKoUxxpCMLwz.gyvNkaP3OxM5CwMXAPm93mlX-ktvW46\"\n      ],\n      \"rightsCategory\": \"string\",\n      \"intermediateProvider\": \"string\",\n      \"isPartOf\": {\n        \"@id\": \"http://Z.gbnv58TU5PGTqTk+iOrFuikHDT0n507KWC.B8r,TuV0Mn3qNwImcArVAfl4dW-T8i0OlBfV9oaeN0M\",\n        \"name\": \"string\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"admin\": {\n        \"contributingInstitution\": \"string\"\n      },\n      \"score\": 743.7891369427585\n    },\n    {\n      \"@context\": \"http://fVLFQuUbcuPntAW.admrl1bBWeZFyrpfTtXNq5Z0m,PwuLmQE5kX\",\n      \"@id\": \"http://dp.la/api/items/1df43d2b1b7b21843abb5f44982f1fef\",\n      \"id\": \"1df43d2b1b7b21843abb5f44982f1fef\",\n      \"sourceResource\": {\n        \"@id\": \"https://xyIsQNdcFcfLq.fafaThSyrYymGDZNGhVgPD,yiN1.XWzqzatekxiEATZge3bqZm88.lri3BY0soYf3\",\n        \"title\": [\n          \"Portrait of Abraham Lincoln\"\n        ],\n        \"description\": [\n          \"string\",\n          \"string\"\n        ],\n        \"creator\": [\n          \"string\",\n          \"string\"\n        ],\n        \"contributor\": [\n          \"string\",\n          \"string\"\n        ],\n        \"publisher\": [\n          \"string\",\n          \"string\"\n        ],\n        \"subject\": [\n          {\n            \"@id\": \"https://vWvOHfAUspYzkGLCbYYse.crjMGxrAnETu6qMeZtbAw2iR1eWE22FV1r5qV,gF10hZDu\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          },\n          {\n            \"@id\": \"http://T.slhJs81OylsFmyrKLYKtpIRr,aXmTFI4oevH8pjT5CPJvmFnpJVka\",\n            \"@type\": \"string\",\n            \"name\": \"Presidents -- United States\",\n            \"scheme\": \"string\"\n          }\n        ],\n        \"type\": [\n          \"string\",\n          \"string\"\n        ],\n        \"format\": [\n          \"string\",\n          \"string\"\n        ],\n        \"language\": [\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          },\n          {\n            \"name\": \"English\",\n            \"iso639_3\": \"eng\"\n          }\n        ],\n        \"date\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"temporal\": {\n          \"displayDate\": \"circa 1865\",\n          \"begin\": \"1865\",\n          \"end\": \"1865\",\n          \"after\": \"string\",\n          \"before\": \"string\"\n        },\n        \"spatial\": [\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"city\": \"string\",\n            \"county\": \"string\",\n            \"region\": \"string\",\n            \"state\": \"string\",\n            \"country\": \"string\",\n            \"coordinates\": \"38.9072,-77.0369\",\n            \"iso3166-2\": \"string\"\n          }\n        ],\n        \"identifier\": [\n          \"string\",\n          \"string\"\n        ],\n        \"rights\": [\n          \"string\",\n          \"string\"\n        ],\n        \"relation\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extent\": [\n          \"string\",\n          \"string\"\n        ],\n        \"collection\": {\n          \"@id\": \"http://vpaiirwT.rfvJH2LEnOTp-UkCC\",\n          \"id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\"\n        },\n        \"subtitle\": [\n          \"string\",\n          \"string\"\n        ],\n        \"specType\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"dataProvider\": {\n        \"@id\": \"http://eEnKWXfWLGsQXLsXeOskHmncAhFrwlTC.lexfKiTjxnfWlrtzKAAx18bUw.J9re\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"https://bjkmciwxjZZPcUhdxRuC.cjghaHJs0.Jd+HLukhFKmJgNUgBjnn\",\n          \"http://kSvHMZblCaSHIIEwR.baMBU.s\"\n        ]\n      },\n      \"provider\": {\n        \"@id\": \"http://lwxRDeNcESWWHOwUVgDNTLdMu.flcby6cjCPdgXdEjbX9.nvsSdCj.f-eQzP02N4S\",\n        \"name\": \"Smithsonian Institution\",\n        \"exactMatch\": [\n          \"http://mmGAPalqlzSSPrHwWQsSyoJXTgaf.ucxqF17I8NO+G0r-jpybu5\",\n          \"https://fvBwybrrAm.jfoXJk1zCLvT.s0vtG6Q2W4iZgRvCV0Iuet9NevsWMtBhQpHZjhvwKK4,oMC,Ggd9fCGoB8t\"\n        ]\n      },\n      \"isShownAt\": \"https://DLdMhIGRCUBJnG.srvoDpgo4svsB4f52QQf4kyRbyS28XVGKfZyjzHbYBd\",\n      \"object\": \"http://iezYmZWAZdNWfHqAKAOByALeYUNnjQDGR.jacCzAPFRzHETJR\",\n      \"hasView\": [\n        {\n          \"@id\": \"http://lbLhnJaFBlIpWYPrzzMKf.ylgrK1sBW7qoTmIpPfAA0HocD+dUbq1G2X6wi7z9PsZmthTtcJE7a+tU\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"http://GAUwBBjEqxiURcao.ndwxV8nHWNjT9RpxIxaAIUuH,bxcw6IcbsruUeDyAqiyAhNwU56Dn7fWkWw.\"\n        },\n        {\n          \"@id\": \"https://lDMwsNThgMzYBpxjnIGojUuCXHDsIfYpL.pjaflTUOC6,GUWalDc\",\n          \"format\": \"string\",\n          \"rights\": \"string\",\n          \"edmRights\": \"http://XMmTfLcAmYz.bowsGPIQ0Tif\"\n        }\n      ],\n      \"iiifManifest\": \"https://qwHUqVlHOzTNdYvFGP.vuegLtexFfcrgBY3dTlX56OmjnL.whztvDOjPYtqCoVu+7V7sU8\",\n      \"rights\": [\n        \"http://HIDKZhmgHjEIaNxoAWgCDbLOTN.wcimZdn7+s5oS8ijTFEGB7\",\n        \"http://XAKYenyNqgkuiCBBwP.ldcvG06T,cmNtsHZraI5FHtmdNRVbHkQzIV1qdCzglOQQT+gTcx9jeDAlmvDiBxAY0\"\n      ],\n      \"rightsCategory\": \"string\",\n      \"intermediateProvider\": \"string\",\n      \"isPartOf\": {\n        \"@id\": \"http://piwLzLoACqkknOANn.xjwaIIXHvsHraG+cLpKuu4DK.JuQpt-DtBVccskP3tvilZnZQPeZgDG5wQDwzKYObaS-9\",\n        \"name\": \"string\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"admin\": {\n        \"contributingInstitution\": \"string\"\n      },\n      \"score\": 5525.245274524867\n    }\n  ],\n  \"facets\": {\n    \"key_0\": {\n      \"_type\": \"terms\",\n      \"terms\": [\n        {\n          \"term\": \"image\",\n          \"count\": 24831\n        },\n        {\n          \"term\": \"image\",\n          \"count\": 24831\n        }\n      ]\n    },\n    \"key_1\": {\n      \"_type\": \"terms\",\n      \"terms\": [\n        {\n          \"term\": \"image\",\n          \"count\": 24831\n        },\n        {\n          \"term\": \"image\",\n          \"count\": 24831\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d02cb307-2eb7-4e89-9be5-07658c2b2df5",
+              "name": "Forbidden — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "sourceResource.type:image"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6709c91a-bc64-42ab-9b11-9b8021201275",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "sourceResource.type:image"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46e56a8c-4ac9-496a-bdf3-afa92d8f7d2c",
+          "name": "API health check",
+          "request": {
+            "name": "API health check",
+            "description": {
+              "content": "Returns HTTP 200 OK if the API is operational.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a24a3c72-ae20-453c-bbe2-810504e5555e",
+              "name": "API is healthy and operational",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dp.la/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "327ed746-390c-4e8c-8dd0-00047c20b09d",
+    "name": "Digital Public Library of America (DPLA) Authentication Utilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.\n\nContact Support:\n Name: DPLA Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

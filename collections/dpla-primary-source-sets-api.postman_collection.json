@@ -1,0 +1,817 @@
+{
+  "item": [
+    {
+      "id": "e34eb547-7504-49b5-a5a1-27ad10b081e2",
+      "name": "Primary Source Sets",
+      "description": {
+        "content": "Search and retrieve primary source sets (PSS) for education",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1fb45e5-d4fc-4c9f-85b9-0106aa009e4f",
+          "name": "Search primary source sets",
+          "request": {
+            "name": "Search primary source sets",
+            "description": {
+              "content": "Search DPLA's Primary Source Sets (PSS) — curated collections of primary source documents designed for classroom use. Returns set metadata including title, description, creator, and source items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pss",
+                "sets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "10",
+                  "description": "Number of results per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your DPLA API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dabfd411-e948-42e0-8ec5-ce683b0051e2",
+              "name": "Successful primary source sets search response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"http://p.utdovaMZxx3WwlE-\",\n  \"@id\": \"https://zREflGGWJ.nftkhwxB.31DpaygZ8XvWBUHoPaR\",\n  \"count\": 9176,\n  \"docs\": [\n    {\n      \"@id\": \"http://ilEAASfdeQAZxGhAMDlbQRhPpBXY.itsNiht5VpHeGxU1z,Wym9ra1X5AulYP,c91rhs0sU+6H6cXxbB4cE0nlRlDLRtqBo9U0wOrxBHdi\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"hasPart\": [\n        {\n          \"@id\": \"http://EubnrphFGuVsiIBDPfc.lmfjASIl7bHqcbwzkEBB,2zofsXyyiQh6jUAnppW0FNTJD9Sb\"\n        },\n        {\n          \"@id\": \"http://MXMxlwFqhmUAfVqfzHEjyb.cpagEn1e,bcWNzaZGA2xDQBd2tu7cwVhq+WC3kmpSF+FtiuW0aAPDvriVRqr\"\n        }\n      ],\n      \"creator\": {},\n      \"dateCreated\": \"string\"\n    },\n    {\n      \"@id\": \"http://oFTqxoJqiHPnYtaQdRAsmCu.baLQmTFgQ3UFfrKT+\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"hasPart\": [\n        {\n          \"@id\": \"http://zsYgGR.kkmnJMbGTZ-X4rz\"\n        },\n        {\n          \"@id\": \"https://smeGZXcVBxccs.szlfuX9ztCq\"\n        }\n      ],\n      \"creator\": {},\n      \"dateCreated\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5c1c063-835d-4d50-a37e-082001a58c1d",
+              "name": "Forbidden — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6be90d53-dcc1-404b-910e-d412864575fc",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66e36ff7-03f7-4355-940b-73e19fd960d8",
+          "name": "Fetch a single primary source set by ID",
+          "request": {
+            "name": "Fetch a single primary source set by ID",
+            "description": {
+              "content": "Retrieve a complete primary source set record by its identifier, including all source items and educational metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pss",
+                "sets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your DPLA API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Primary source set identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8fdd12c-010b-4146-9e60-7a657a4687db",
+              "name": "Successful primary source set fetch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"http://EYKhOoPTqyGRlYJiIRKgIQizvsfZ.fejXLgyMhmWLxAZ\",\n  \"@id\": \"http://JlVOWcehABFxDVEYZeXDfjZ.tbp3wmFvtW7JPka8VwDayi4A1xzbVdwKNohr,Qdg,rwFpfiOiD\",\n  \"docs\": [\n    {\n      \"@id\": \"https://uUJKrWJKuSWjrYwWGMIwlBZ.srdzgiZTFCrtm5tP-eHRMgWNIbXF1D4ye+UAh0fI8R2g8ZECiaRp3PBfZ\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"hasPart\": [\n        {\n          \"@id\": \"https://BFbCqLwASlYpqBIewtcxnrSxXefAZ.uajEAG5zKNHRf2yQiBTb2x+pFnm-zwS,phBRriHWL3bCRgBBTv58KQ7F7wNXSxPQgF5G4YCOryfrisUR80d\"\n        },\n        {\n          \"@id\": \"http://CUPhG.jhLxelGU9YZMe4ViR6h.pdcipE17DKb5tnIBPCSTGVS4E7MW8dRith,CrXKeembsv5C7\"\n        }\n      ],\n      \"creator\": {},\n      \"dateCreated\": \"string\"\n    },\n    {\n      \"@id\": \"https://IhJHXgrbwg.ibyse8xjxrOT7jvfzlItgQ1LOOAthCMsZJurMhJ8-NjhKSyYYIz3\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"hasPart\": [\n        {\n          \"@id\": \"https://gTKgaizeZVubuzajPh.qdHRiqfnhDADOFExkq9DUU1\"\n        },\n        {\n          \"@id\": \"http://SOH.etpUP9f-Tjv16uz3lGAKQpUHBZ8TjLnr3ffgpM,KCej1d\"\n        }\n      ],\n      \"creator\": {},\n      \"dateCreated\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b096a378-b70a-45e8-9ef7-8a15fb015991",
+              "name": "Forbidden — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6947828-efdc-4ce1-ba2c-48d9569728ab",
+              "name": "Primary source set not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e03ee0cf-509c-4f78-833e-c01adb758910",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac37a79b-3720-46e0-8fc1-9f225073a652",
+          "name": "Fetch primary source items belonging to a set",
+          "request": {
+            "name": "Fetch primary source items belonging to a set",
+            "description": {
+              "content": "Retrieve primary source items (hasPart) that belong to a specific primary source set, identified by the set's ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pss",
+                "sources",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your DPLA API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Primary source set identifier whose sources to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96b5bc08-6cc1-4b0b-bf8c-9bccf08058b0",
+              "name": "Successful source items response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sources",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier whose sources to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@context\": \"https://fbavQwrODlQoSLOTSTwz.dyTEI9+sO\",\n  \"@id\": \"https://sCHLSNSZGlEktRgWTmqttKvfnWrq.mmiX+FJB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acb8253e-3eef-4a7b-a75a-96595a832e96",
+              "name": "Forbidden — invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sources",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier whose sources to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77d12303-f54a-4461-ba67-53d808d8192a",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sources",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier whose sources to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db509e3c-8656-4641-b7fb-479ba58073b3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pss",
+                    "sources",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Primary source set identifier whose sources to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"invalid_api_key\",\n  \"message\": \"Invalid or inactive API key.\",\n  \"documentation\": \"https://pro.dp.la/developers/responses#errors\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dp.la/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a321a34-14b3-4d60-885d-e76c8d28b067",
+    "name": "Digital Public Library of America (DPLA) Authentication Primary Source Sets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.\n\nContact Support:\n Name: DPLA Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

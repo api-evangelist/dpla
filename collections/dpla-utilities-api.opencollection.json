@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Digital Public Library of America (DPLA) Authentication Utilities API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a random item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dp.la/v2/random",
+            "params": [
+              {
+                "name": "filter",
+                "value": "sourceResource.type:image",
+                "type": "query",
+                "description": "Filter expression to constrain the random selection pool. Format is field:value."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your DPLA API key. Alternatively, pass as Authorization header."
+              }
+            ]
+          },
+          "docs": "Returns a single randomly selected cultural heritage item record. Supports an optional filter parameter to constrain the pool of eligible records."
+        },
+        {
+          "info": {
+            "name": "API health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dp.la/v2/health-check"
+          },
+          "docs": "Returns HTTP 200 OK if the API is operational."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
