@@ -52,6 +52,10 @@ apis:
   baseURL: https://api.dp.la/v2
   tags:
   - Authentication
+  - APIKeys
+  - Registration
+  tags_raw:
+  - Authentication
   - API Keys
   - Registration
   properties:
@@ -81,6 +85,8 @@ apis:
   humanURL: https://pro.dp.la/developers/api-codex
   baseURL: https://api.dp.la/v2
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
