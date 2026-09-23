@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Digital Public Library of America (DPLA) Authentication Primary Source Sets API
+  title: Digital Public Library of America (DPLA) Primary Source…
   description: The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.
   version: '2'
   contact:
@@ -162,26 +162,50 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    PssSourceResponse:
       type: object
-      description: Standard error response body.
+      description: Source items belonging to a primary source set.
       properties:
-        error:
-          type: string
-          description: Machine-readable error code.
-          example: invalid_api_key
-        message:
-          type: string
-          description: Human-readable error description.
-          example: Invalid or inactive API key.
-        documentation:
+        '@context':
           type: string
           format: uri
-          description: Link to error documentation.
-          example: https://pro.dp.la/developers/responses#errors
-      required:
-      - error
-      - message
+        '@id':
+          type: string
+          format: uri
+        docs:
+          type: array
+          items:
+            type: object
+    PssSetResponse:
+      type: object
+      description: A single primary source set.
+      properties:
+        '@context':
+          type: string
+          format: uri
+        '@id':
+          type: string
+          format: uri
+        docs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PssSet'
+    PssSetListResponse:
+      type: object
+      description: List of primary source sets.
+      properties:
+        '@context':
+          type: string
+          format: uri
+        '@id':
+          type: string
+          format: uri
+        count:
+          type: integer
+        docs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PssSet'
     PssSet:
       type: object
       description: A DPLA Primary Source Set record for educational use.
@@ -214,50 +238,26 @@ components:
         dateCreated:
           type: string
           description: Creation date.
-    PssSetResponse:
+    ErrorResponse:
       type: object
-      description: A single primary source set.
+      description: Standard error response body.
       properties:
-        '@context':
+        error:
+          type: string
+          description: Machine-readable error code.
+          example: invalid_api_key
+        message:
+          type: string
+          description: Human-readable error description.
+          example: Invalid or inactive API key.
+        documentation:
           type: string
           format: uri
-        '@id':
-          type: string
-          format: uri
-        docs:
-          type: array
-          items:
-            $ref: '#/components/schemas/PssSet'
-    PssSetListResponse:
-      type: object
-      description: List of primary source sets.
-      properties:
-        '@context':
-          type: string
-          format: uri
-        '@id':
-          type: string
-          format: uri
-        count:
-          type: integer
-        docs:
-          type: array
-          items:
-            $ref: '#/components/schemas/PssSet'
-    PssSourceResponse:
-      type: object
-      description: Source items belonging to a primary source set.
-      properties:
-        '@context':
-          type: string
-          format: uri
-        '@id':
-          type: string
-          format: uri
-        docs:
-          type: array
-          items:
-            type: object
+          description: Link to error documentation.
+          example: https://pro.dp.la/developers/responses#errors
+      required:
+      - error
+      - message
   securitySchemes:
     ApiKeyQuery:
       type: apiKey

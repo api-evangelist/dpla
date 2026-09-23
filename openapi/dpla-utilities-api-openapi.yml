@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Digital Public Library of America (DPLA) Authentication Utilities API
+  title: Digital Public Library of America (DPLA) Utilities API
   description: The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint.
   version: '2'
   contact:
@@ -71,18 +71,6 @@ paths:
           description: API is healthy and operational
 components:
   schemas:
-    Language:
-      type: object
-      description: Language of the item.
-      properties:
-        name:
-          type: string
-          description: Language name.
-          example: English
-        iso639_3:
-          type: string
-          description: ISO 639-3 three-letter language code.
-          example: eng
     FacetResult:
       type: object
       description: Aggregated facet counts for a specific field.
@@ -96,67 +84,22 @@ components:
           items:
             $ref: '#/components/schemas/FacetTerm'
           description: List of term/count pairs for a terms facet.
-    SpatialLocation:
+    Collection:
       type: object
-      description: A geographic location associated with the item.
+      description: The collection this item belongs to at the contributing institution.
       properties:
-        name:
-          type: string
-          description: Place name.
-        city:
-          type: string
-          description: City name.
-        county:
-          type: string
-          description: County name.
-        region:
-          type: string
-          description: Region name.
-        state:
-          type: string
-          description: US state name.
-        country:
-          type: string
-          description: Country name.
-        coordinates:
-          type: string
-          description: Geographic coordinates in "lat,lon" format.
-          example: 38.9072,-77.0369
-        iso3166-2:
-          type: string
-          description: ISO 3166-2 subdivision code.
-    ErrorResponse:
-      type: object
-      description: Standard error response body.
-      properties:
-        error:
-          type: string
-          description: Machine-readable error code.
-          example: invalid_api_key
-        message:
-          type: string
-          description: Human-readable error description.
-          example: Invalid or inactive API key.
-        documentation:
+        '@id':
           type: string
           format: uri
-          description: Link to error documentation.
-          example: https://pro.dp.la/developers/responses#errors
-      required:
-      - error
-      - message
-    FacetTerm:
-      type: object
-      description: A single facet term with its document count.
-      properties:
-        term:
+        id:
           type: string
-          description: The facet value.
-          example: image
-        count:
-          type: integer
-          description: Number of documents with this value.
-          example: 24831
+          description: Collection identifier.
+        title:
+          type: string
+          description: Collection title.
+        description:
+          type: string
+          description: Collection description.
     ItemSearchResponse:
       type: object
       description: JSON-LD response envelope for a list of DPLA item records.
@@ -192,6 +135,24 @@ components:
           description: Facet aggregation results keyed by field name. Only present when the facets query parameter is used.
           additionalProperties:
             $ref: '#/components/schemas/FacetResult'
+    WebResource:
+      type: object
+      description: A web-accessible representation or view of the item.
+      properties:
+        '@id':
+          type: string
+          format: uri
+          description: URL of this web resource.
+        format:
+          type: string
+          description: MIME type or format of this resource.
+        rights:
+          type: string
+          description: Rights statement for this resource.
+        edmRights:
+          type: string
+          format: uri
+          description: EDM rights URI for this resource.
     DPLAItem:
       type: object
       description: A single DPLA cultural heritage item metadata record (DPLA MAP v4).
@@ -267,6 +228,47 @@ components:
           type: number
           format: float
           description: Relevance score assigned by the search engine.
+    SpatialLocation:
+      type: object
+      description: A geographic location associated with the item.
+      properties:
+        name:
+          type: string
+          description: Place name.
+        city:
+          type: string
+          description: City name.
+        county:
+          type: string
+          description: County name.
+        region:
+          type: string
+          description: Region name.
+        state:
+          type: string
+          description: US state name.
+        country:
+          type: string
+          description: Country name.
+        coordinates:
+          type: string
+          description: Geographic coordinates in "lat,lon" format.
+          example: 38.9072,-77.0369
+        iso3166-2:
+          type: string
+          description: ISO 3166-2 subdivision code.
+    Language:
+      type: object
+      description: Language of the item.
+      properties:
+        name:
+          type: string
+          description: Language name.
+          example: English
+        iso639_3:
+          type: string
+          description: ISO 639-3 three-letter language code.
+          example: eng
     SubjectTerm:
       type: object
       description: A subject heading term.
@@ -283,62 +285,26 @@ components:
         scheme:
           type: string
           description: Subject vocabulary scheme (e.g., LCSH).
-    Collection:
+    ErrorResponse:
       type: object
-      description: The collection this item belongs to at the contributing institution.
+      description: Standard error response body.
       properties:
-        '@id':
+        error:
+          type: string
+          description: Machine-readable error code.
+          example: invalid_api_key
+        message:
+          type: string
+          description: Human-readable error description.
+          example: Invalid or inactive API key.
+        documentation:
           type: string
           format: uri
-        id:
-          type: string
-          description: Collection identifier.
-        title:
-          type: string
-          description: Collection title.
-        description:
-          type: string
-          description: Collection description.
-    WebResource:
-      type: object
-      description: A web-accessible representation or view of the item.
-      properties:
-        '@id':
-          type: string
-          format: uri
-          description: URL of this web resource.
-        format:
-          type: string
-          description: MIME type or format of this resource.
-        rights:
-          type: string
-          description: Rights statement for this resource.
-        edmRights:
-          type: string
-          format: uri
-          description: EDM rights URI for this resource.
-    DateRange:
-      type: object
-      description: A date or date range associated with the item.
-      properties:
-        displayDate:
-          type: string
-          description: Human-readable date string as supplied by the institution.
-          example: circa 1865
-        begin:
-          type: string
-          description: Start date (ISO 8601 or year string).
-          example: '1865'
-        end:
-          type: string
-          description: End date (ISO 8601 or year string).
-          example: '1865'
-        after:
-          type: string
-          description: Date after which results are returned (for filtering).
-        before:
-          type: string
-          description: Date before which results are returned (for filtering).
+          description: Link to error documentation.
+          example: https://pro.dp.la/developers/responses#errors
+      required:
+      - error
+      - message
     SourceResource:
       type: object
       description: The intellectual content and descriptive metadata of the original cultural heritage object, following DPLA Metadata Application Profile.
@@ -434,6 +400,40 @@ components:
           items:
             type: string
           description: Specific type refinements.
+    FacetTerm:
+      type: object
+      description: A single facet term with its document count.
+      properties:
+        term:
+          type: string
+          description: The facet value.
+          example: image
+        count:
+          type: integer
+          description: Number of documents with this value.
+          example: 24831
+    DateRange:
+      type: object
+      description: A date or date range associated with the item.
+      properties:
+        displayDate:
+          type: string
+          description: Human-readable date string as supplied by the institution.
+          example: circa 1865
+        begin:
+          type: string
+          description: Start date (ISO 8601 or year string).
+          example: '1865'
+        end:
+          type: string
+          description: End date (ISO 8601 or year string).
+          example: '1865'
+        after:
+          type: string
+          description: Date after which results are returned (for filtering).
+        before:
+          type: string
+          description: Date before which results are returned (for filtering).
     Agent:
       type: object
       description: An organization or institution acting as provider or data provider.
