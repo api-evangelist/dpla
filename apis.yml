@@ -45,6 +45,15 @@ access: Public
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dpla.png
 tags:
   - Cultural Heritage
+  - Library
+  - Archives
+  - Museums
+  - Open Data
+  - Metadata
+  - Digital Collections
+  - Public Domain
+tags_raw:
+  - Cultural Heritage
   - Libraries
   - Archives
   - Museums

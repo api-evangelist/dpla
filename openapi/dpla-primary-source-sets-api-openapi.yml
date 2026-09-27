@@ -162,20 +162,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    PssSourceResponse:
-      type: object
-      description: Source items belonging to a primary source set.
-      properties:
-        '@context':
-          type: string
-          format: uri
-        '@id':
-          type: string
-          format: uri
-        docs:
-          type: array
-          items:
-            type: object
     PssSetResponse:
       type: object
       description: A single primary source set.
@@ -258,6 +244,20 @@ components:
       required:
       - error
       - message
+    PssSourceResponse:
+      type: object
+      description: Source items belonging to a primary source set.
+      properties:
+        '@context':
+          type: string
+          format: uri
+        '@id':
+          type: string
+          format: uri
+        docs:
+          type: array
+          items:
+            type: object
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
