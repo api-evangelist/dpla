@@ -71,44 +71,6 @@ paths:
           description: API is healthy and operational
 components:
   schemas:
-    Agent:
-      type: object
-      description: An organization or institution acting as provider or data provider.
-      properties:
-        '@id':
-          type: string
-          format: uri
-          description: URI identifying the organization.
-        name:
-          type: string
-          description: Name of the organization.
-          example: Smithsonian Institution
-        exactMatch:
-          type: array
-          items:
-            type: string
-            format: uri
-          description: URIs that exactly identify this organization.
-    ErrorResponse:
-      type: object
-      description: Standard error response body.
-      properties:
-        error:
-          type: string
-          description: Machine-readable error code.
-          example: invalid_api_key
-        message:
-          type: string
-          description: Human-readable error description.
-          example: Invalid or inactive API key.
-        documentation:
-          type: string
-          format: uri
-          description: Link to error documentation.
-          example: https://pro.dp.la/developers/responses#errors
-      required:
-      - error
-      - message
     DateRange:
       type: object
       description: A date or date range associated with the item.
@@ -131,6 +93,153 @@ components:
         before:
           type: string
           description: Date before which results are returned (for filtering).
+    ErrorResponse:
+      type: object
+      description: Standard error response body.
+      properties:
+        error:
+          type: string
+          description: Machine-readable error code.
+          example: invalid_api_key
+        message:
+          type: string
+          description: Human-readable error description.
+          example: Invalid or inactive API key.
+        documentation:
+          type: string
+          format: uri
+          description: Link to error documentation.
+          example: https://pro.dp.la/developers/responses#errors
+      required:
+      - error
+      - message
+    Collection:
+      type: object
+      description: The collection this item belongs to at the contributing institution.
+      properties:
+        '@id':
+          type: string
+          format: uri
+        id:
+          type: string
+          description: Collection identifier.
+        title:
+          type: string
+          description: Collection title.
+        description:
+          type: string
+          description: Collection description.
+    Agent:
+      type: object
+      description: An organization or institution acting as provider or data provider.
+      properties:
+        '@id':
+          type: string
+          format: uri
+          description: URI identifying the organization.
+        name:
+          type: string
+          description: Name of the organization.
+          example: Smithsonian Institution
+        exactMatch:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: URIs that exactly identify this organization.
+    SubjectTerm:
+      type: object
+      description: A subject heading term.
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+        name:
+          type: string
+          description: Subject heading text.
+          example: Presidents -- United States
+        scheme:
+          type: string
+          description: Subject vocabulary scheme (e.g., LCSH).
+    WebResource:
+      type: object
+      description: A web-accessible representation or view of the item.
+      properties:
+        '@id':
+          type: string
+          format: uri
+          description: URL of this web resource.
+        format:
+          type: string
+          description: MIME type or format of this resource.
+        rights:
+          type: string
+          description: Rights statement for this resource.
+        edmRights:
+          type: string
+          format: uri
+          description: EDM rights URI for this resource.
+    ItemSearchResponse:
+      type: object
+      description: JSON-LD response envelope for a list of DPLA item records.
+      properties:
+        '@context':
+          type: string
+          format: uri
+          description: JSON-LD context URI for DPLA Metadata Application Profile.
+          example: http://dp.la/api/items/context
+        '@id':
+          type: string
+          format: uri
+          description: URI of this result set.
+        count:
+          type: integer
+          description: Total number of records matching the query.
+          example: 128450
+        start:
+          type: integer
+          description: Index of the first result in this page (0-indexed).
+          example: 0
+        limit:
+          type: integer
+          description: Number of results in this page.
+          example: 10
+        docs:
+          type: array
+          description: Array of DPLA item metadata records.
+          items:
+            $ref: '#/components/schemas/DPLAItem'
+        facets:
+          type: object
+          description: Facet aggregation results keyed by field name. Only present when the facets query parameter is used.
+          additionalProperties:
+            $ref: '#/components/schemas/FacetResult'
+    Language:
+      type: object
+      description: Language of the item.
+      properties:
+        name:
+          type: string
+          description: Language name.
+          example: English
+        iso639_3:
+          type: string
+          description: ISO 639-3 three-letter language code.
+          example: eng
+    FacetTerm:
+      type: object
+      description: A single facet term with its document count.
+      properties:
+        term:
+          type: string
+          description: The facet value.
+          example: image
+        count:
+          type: integer
+          description: Number of documents with this value.
+          example: 24831
     SourceResource:
       type: object
       description: The intellectual content and descriptive metadata of the original cultural heritage object, following DPLA Metadata Application Profile.
@@ -226,38 +335,35 @@ components:
           items:
             type: string
           description: Specific type refinements.
-    Collection:
+    SpatialLocation:
       type: object
-      description: The collection this item belongs to at the contributing institution.
+      description: A geographic location associated with the item.
       properties:
-        '@id':
-          type: string
-          format: uri
-        id:
-          type: string
-          description: Collection identifier.
-        title:
-          type: string
-          description: Collection title.
-        description:
-          type: string
-          description: Collection description.
-    SubjectTerm:
-      type: object
-      description: A subject heading term.
-      properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
         name:
           type: string
-          description: Subject heading text.
-          example: Presidents -- United States
-        scheme:
+          description: Place name.
+        city:
           type: string
-          description: Subject vocabulary scheme (e.g., LCSH).
+          description: City name.
+        county:
+          type: string
+          description: County name.
+        region:
+          type: string
+          description: Region name.
+        state:
+          type: string
+          description: US state name.
+        country:
+          type: string
+          description: Country name.
+        coordinates:
+          type: string
+          description: Geographic coordinates in "lat,lon" format.
+          example: 38.9072,-77.0369
+        iso3166-2:
+          type: string
+          description: ISO 3166-2 subdivision code.
     DPLAItem:
       type: object
       description: A single DPLA cultural heritage item metadata record (DPLA MAP v4).
@@ -346,112 +452,6 @@ components:
           items:
             $ref: '#/components/schemas/FacetTerm'
           description: List of term/count pairs for a terms facet.
-    Language:
-      type: object
-      description: Language of the item.
-      properties:
-        name:
-          type: string
-          description: Language name.
-          example: English
-        iso639_3:
-          type: string
-          description: ISO 639-3 three-letter language code.
-          example: eng
-    FacetTerm:
-      type: object
-      description: A single facet term with its document count.
-      properties:
-        term:
-          type: string
-          description: The facet value.
-          example: image
-        count:
-          type: integer
-          description: Number of documents with this value.
-          example: 24831
-    WebResource:
-      type: object
-      description: A web-accessible representation or view of the item.
-      properties:
-        '@id':
-          type: string
-          format: uri
-          description: URL of this web resource.
-        format:
-          type: string
-          description: MIME type or format of this resource.
-        rights:
-          type: string
-          description: Rights statement for this resource.
-        edmRights:
-          type: string
-          format: uri
-          description: EDM rights URI for this resource.
-    ItemSearchResponse:
-      type: object
-      description: JSON-LD response envelope for a list of DPLA item records.
-      properties:
-        '@context':
-          type: string
-          format: uri
-          description: JSON-LD context URI for DPLA Metadata Application Profile.
-          example: http://dp.la/api/items/context
-        '@id':
-          type: string
-          format: uri
-          description: URI of this result set.
-        count:
-          type: integer
-          description: Total number of records matching the query.
-          example: 128450
-        start:
-          type: integer
-          description: Index of the first result in this page (0-indexed).
-          example: 0
-        limit:
-          type: integer
-          description: Number of results in this page.
-          example: 10
-        docs:
-          type: array
-          description: Array of DPLA item metadata records.
-          items:
-            $ref: '#/components/schemas/DPLAItem'
-        facets:
-          type: object
-          description: Facet aggregation results keyed by field name. Only present when the facets query parameter is used.
-          additionalProperties:
-            $ref: '#/components/schemas/FacetResult'
-    SpatialLocation:
-      type: object
-      description: A geographic location associated with the item.
-      properties:
-        name:
-          type: string
-          description: Place name.
-        city:
-          type: string
-          description: City name.
-        county:
-          type: string
-          description: County name.
-        region:
-          type: string
-          description: Region name.
-        state:
-          type: string
-          description: US state name.
-        country:
-          type: string
-          description: Country name.
-        coordinates:
-          type: string
-          description: Geographic coordinates in "lat,lon" format.
-          example: 38.9072,-77.0369
-        iso3166-2:
-          type: string
-          description: ISO 3166-2 subdivision code.
   securitySchemes:
     ApiKeyQuery:
       type: apiKey
