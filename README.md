@@ -1,4 +1,4 @@
-# Digital Public Library of America (dpla)
+# Digital Public Library of America
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,91 +66,128 @@
 
 The Digital Public Library of America (DPLA) provides a free REST API that gives access to metadata for 50 million+ cultural heritage items aggregated from 4,000+ US libraries, archives, and museums. The API supports full-text search, field-specific queries, geographic and date range filtering, faceted browsing, and JSONP callbacks. All results are returned as JSON-LD. API keys are issued free of charge via a self-service email-based registration endpoint. DPLA aggregates contributions from cultural heritage institutions across the United States and makes the combined metadata freely available to researchers, developers, and the public.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/apis.yml)
+**Areas:** Cultural Heritage · Library · Archives · Museums · Open Data · Metadata · Digital Collections · Public Domain
 
-## Scope
+## Digital Public Library of America on APIs.io
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** Public
+Everything profiled for Digital Public Library of America is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/dpla/](https://apis.io/providers/dpla/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Cultural Heritage
-- Libraries
-- Archives
-- Museums
-- Open Data
-- Metadata
-- Digital Collections
-- Public Domain
+- [DPLA API Key Registration](https://apis.io/apis/dpla/api-key-registration/) — Self-service API key registration endpoint that issues free access keys via email. Developers submit their email address via HTTP POST and receive an API…
+- [Digital Public Library of America Authentication API](https://apis.io/apis/dpla/dpla-authentication-api/) — API key registration and management
+- [Digital Public Library of America Items API](https://apis.io/apis/dpla/dpla-items-api/) — Search and retrieve cultural heritage item metadata records
+- [Digital Public Library of America Primary Source Sets API](https://apis.io/apis/dpla/dpla-primary-source-sets-api/) — Search and retrieve primary source sets (PSS) for education
+- [Digital Public Library of America Utilities API](https://apis.io/apis/dpla/dpla-utilities-api/) — Utility endpoints for health checks and random item retrieval
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### DPLA Items API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The DPLA Items API provides search and retrieval of metadata records for cultural heritage objects aggregated from 4,000+ US institutions. Supports full-text search, field-level queries, boolean and wildcard operators, geographic distance queries, date range filtering, and faceted aggregations. Returns JSON-LD records containing title, creator, date, subject, rights, provider, and thumbnail information. Pagination supports up to 100 results per page and batch retrieval of up to 50 items by ID in a single request.
+- [Dpla Agentic Access](https://apis.io/agentic-access/dpla/dpla-agentic-access/)
 
-- **Human URL:** [https://pro.dp.la/developers/api-codex](https://pro.dp.la/developers/api-codex)
-- **Base URL:** `https://api.dp.la/v2`
+#### JSON-LD (1)
 
-#### Tags
+Linked-data contexts for the provider's vocabulary.
 
-- Items
-- Search
-- Metadata
-- Cultural Heritage
-- Libraries
-- Archives
-- Museums
-- JSON-LD
+- [context Context](https://apis.io/jsonld/dpla/context/)
 
-#### Properties
+#### Collections (4)
 
-- [Documentation](https://pro.dp.la/developers/api-codex)
-- [Getting Started](https://pro.dp.la/developers/api-codex)
-- [Authentication](https://pro.dp.la/developers/api-codex)
-- [GitHub Repository](https://github.com/dpla/api)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/openapi/openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+Postman and Open Collection request collections.
 
-### DPLA API Key Registration
+- [Digital Public Library of America (DPLA) Authentication API](https://apis.io/collections/dpla/open-dpla-authentication-api/)
+- [Digital Public Library of America (DPLA) Authentication Items API](https://apis.io/collections/dpla/open-dpla-items-api/)
+- [Digital Public Library of America (DPLA) Authentication Primary Source Sets API](https://apis.io/collections/dpla/open-dpla-primary-source-sets-api/)
+- [Digital Public Library of America (DPLA) Authentication Utilities API](https://apis.io/collections/dpla/open-dpla-utilities-api/)
 
-Self-service API key registration endpoint that issues free access keys via email. Developers submit their email address via HTTP POST and receive an API key by email. The key is then passed as the api_key query parameter or Authorization header on all subsequent Items API requests.
+#### Security (2)
 
-- **Human URL:** [https://pro.dp.la/developers/api-codex](https://pro.dp.la/developers/api-codex)
-- **Base URL:** `https://api.dp.la/v2`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Dpla Authentication](https://apis.io/security/dpla/dpla-authentication/)
+- [Dpla Domain Security](https://apis.io/security/dpla/dpla-domain-security/)
 
-- Authentication
-- API Keys
-- Registration
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://pro.dp.la/developers/api-codex)
+- [Plans](https://apis.io/plans/dpla/plans/)
 
-## Common Properties
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/dpla/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/dpla/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://dp.la/)
-- [Developer Portal](https://pro.dp.la/developers)
 - [Documentation](https://pro.dp.la/developers/api-codex)
-- [GitHub Organization](https://github.com/dpla)
-- [GitHub Repository](https://github.com/dpla/api)
 - [Blog](https://dp.la/news)
-- [LinkedIn](https://www.linkedin.com/company/digital-public-library-of-america)
-- [Twitter](https://twitter.com/dpla)
-- [Rate Limits](https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/rate-limits/rate-limits.yml)
-- [Plans](https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/plans/plans.yml)
-- [Fin Ops](https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/finops/finops.yml)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/dpla/refs/heads/main/json-ld/context.jsonld)
+- [GitHub](https://github.com/dpla)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 56.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 5.3 |
+
+**Agent readiness 30.6** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/dpla/](https://apis.io/providers/dpla/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Digital Public Library of America: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/dpla/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
